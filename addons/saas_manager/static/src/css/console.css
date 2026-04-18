@@ -1,0 +1,9 @@
+.console_log_view textarea {
+    background-color: #1e1e1e !important;
+    color: #00ff00 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 13px !important;
+    border: 1px solid #444 !important;
+    padding: 10px !important;
+    min-height: 300px !important;
+}

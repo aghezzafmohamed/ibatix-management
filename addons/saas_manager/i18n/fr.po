@@ -1,0 +1,1858 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saas_manager
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-07 18:51+0000\n"
+"PO-Revision-Date: 2026-01-07 19:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"\n"
+"                <div style=\"background-color: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; font-family: monospace;\">\n"
+"                    <div style=\"margin-bottom: 15px;\">\n"
+"                        <span style=\"color: #888;\">UUID:</span> {uuid}<br/>\n"
+"                        <span style=\"color: #888;\">Type:</span> {type}<br/>\n"
+"                        <span style=\"color: #888;\">State:</span> <span style=\"color: {color}; font-weight: bold;\">{status}</span>\n"
+"                    </div>\n"
+"\n"
+"                    <div style=\"padding: 10px; background: #2d2d2d; border-left: 4px solid #f48fb1; margin-bottom: 20px;\">\n"
+"                        <p style=\"margin: 0; color: #f48fb1;\"><strong>Note:</strong> For a Docker Compose Service, logs are multiple (one per container). Please use the Coolify console.</p>\n"
+"                    </div>\n"
+"\n"
+"                    <a href=\"{link}\" target=\"_blank\" style=\"display: inline-block; background-color: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;\">\n"
+"                        <i class=\"fa fa-external-link\"></i> Open Coolify Console\n"
+"                    </a>\n"
+"                </div>\n"
+"                "
+msgstr ""
+"\n"
+"                <div style=\"background-color: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; font-family: monospace;\">\n"
+"                    <div style=\"margin-bottom: 15px;\">\n"
+"                        <span style=\"color: #888;\">UUID :</span> {uuid}<br/>\n"
+"                        <span style=\"color: #888;\">Type :</span> {type}<br/>\n"
+"                        <span style=\"color: #888;\">État :</span> <span style=\"color: {color}; font-weight: bold;\">{status}</span>\n"
+"                    </div>\n"
+"\n"
+"                    <div style=\"padding: 10px; background: #2d2d2d; border-left: 4px solid #f48fb1; margin-bottom: 20px;\">\n"
+"                        <p style=\"margin: 0; color: #f48fb1;\"><strong>Note :</strong> Pour un Service Docker Compose, les journaux sont multiples (un par conteneur). Veuillez utiliser la console Coolify.</p>\n"
+"                    </div>\n"
+"\n"
+"                    <a href=\"{link}\" target=\"_blank\" style=\"display: inline-block; background-color: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;\">\n"
+"                        <i class=\"fa fa-external-link\"></i> Ouvrir la Console Coolify\n"
+"                    </a>\n"
+"                </div>\n"
+"                "
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"\n"
+"                [METADATA ERROR]\n"
+"                Cannot find 'project_uuid' or 'environment_uuid'.\n"
+"\n"
+"                --- DEBUG ---\n"
+"                Found keys: {}\n"
+"\n"
+"                JSON Preview:\n"
+"                {}\n"
+"                "
+msgstr ""
+"\n"
+"                [ERREUR MÉTADONNÉES]\n"
+"                Impossible de trouver 'project_uuid' ou 'environment_uuid'.\n"
+"\n"
+"                --- DEBUG ---\n"
+"                Clés trouvées : {}\n"
+"\n"
+"                Aperçu JSON :\n"
+"                {}\n"
+"                "
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"\n"
+"(Note: Special characters unsupported by Coolify were automatically removed)"
+msgstr ""
+"\n"
+"(Note : Les caractères spéciaux non supportés par Coolify ont été supprimés automatiquement)"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid ""
+"-----BEGIN OPENSSH PRIVATE KEY-----\n"
+"..."
+msgstr ""
+"-----BEGIN OPENSSH PRIVATE KEY-----\n"
+"..."
+
+#. module: saas_manager
+#: model:mail.template,body_html:saas_manager.email_template_saas_renewal
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Bonjour <t t-out=\"object.partner_id.name or ''\">Client</t>,\n"
+"        <br/><br/>\n"
+"        Votre licence logicielle arrive bientôt à échéance.\n"
+"        Pour assurer la continuité de vos services sans interruption, nous avons préparé le devis de renouvellement ci-joint.\n"
+"        <br/><br/>\n"
+"        <strong>Détails :</strong>\n"
+"        <br/>\n"
+"        Montant : <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\"/>\n"
+"        <br/>\n"
+"        Validité : Prochaine période\n"
+"        <br/><br/>\n"
+"        Vous pouvez consulter, signer et payer ce devis directement en ligne en cliquant sur le bouton ci-dessous :\n"
+"        <br/><br/>\n"
+"        </p><div style=\"text-align: center; margin: 16px 0px;\">\n"
+"            <a t-att-href=\"object.get_portal_url()\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 16px;\">\n"
+"                <i class=\"fa fa-check-circle\"/> Renouveler ma Licence\n"
+"            </a>\n"
+"        </div>\n"
+"        <br/><br/>\n"
+"        Si vous avez des questions, n'hésitez pas à répondre à cet email.\n"
+"        <br/><br/>\n"
+"        Cordialement,\n"
+"        <br/>\n"
+"        <t t-out=\"object.company_id.name or ''\"/>\n"
+"    \n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Bonjour <t t-out=\"object.partner_id.name or ''\">Client</t>,\n"
+"        <br/><br/>\n"
+"        Votre licence logicielle arrive bientôt à échéance.\n"
+"        Pour assurer la continuité de vos services sans interruption, nous avons préparé le devis de renouvellement ci-joint.\n"
+"        <br/><br/>\n"
+"        <strong>Détails :</strong>\n"
+"        <br/>\n"
+"        Montant : <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\"/>\n"
+"        <br/>\n"
+"        Validité : Prochaine période\n"
+"        <br/><br/>\n"
+"        Vous pouvez consulter, signer et payer ce devis directement en ligne en cliquant sur le bouton ci-dessous :\n"
+"        <br/><br/>\n"
+"        </p><div style=\"text-align: center; margin: 16px 0px;\">\n"
+"            <a t-att-href=\"object.get_portal_url()\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 16px;\">\n"
+"                <i class=\"fa fa-check-circle\"/> Renouveler ma Licence\n"
+"            </a>\n"
+"        </div>\n"
+"        <br/><br/>\n"
+"        Si vous avez des questions, n'hésitez pas à répondre à cet email.\n"
+"        <br/><br/>\n"
+"        Cordialement,\n"
+"        <br/>\n"
+"        <t t-out=\"object.company_id.name or ''\"/>\n"
+"    \n"
+"</div>\n"
+"            "
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_type_form
+msgid ""
+"<i class=\"fa fa-code\"/> Variables disponibles :\n"
+"                            <code>DOMAIN_URL</code> (ex: odoo.client.com),\n"
+"                            <code>DB_PASSWORD</code> (Généré automatiquement)"
+msgstr ""
+"<i class=\"fa fa-code\"/> Variables disponibles :\n"
+"                            <code>DOMAIN_URL</code> (ex: odoo.client.com),\n"
+"                            <code>DB_PASSWORD</code> (Généré automatiquement)"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\"/>\n"
+"                                    <strong>Warning:</strong> Modifying this file may break the service."
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\"/>\n"
+"                                    <strong>Attention :</strong> Modifier ce fichier peut casser le service."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_kanban
+msgid "<i class=\"fa fa-external-link me-2 text-primary\" title=\"URL\"/>"
+msgstr "<i class=\"fa fa-external-link me-2 text-primary\" title=\"URL\"/>"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid ""
+"<i class=\"fa fa-info-circle\"/> Modifications here will only take effect "
+"after a <b>Restart</b> of the service."
+msgstr ""
+"<i class=\"fa fa-info-circle\"/> Les modifications ici ne prendront effet "
+"qu'après un <b>Redémarrage</b> du service."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid ""
+"<i class=\"fa fa-lock\"/>\n"
+"                                Paste the <strong>Private Key</strong> below.\n"
+"                                Ensure it has no passphrase for automation to work."
+msgstr ""
+"<i class=\"fa fa-lock\"/>\n"
+"                                Collez la <strong>Clé Privée</strong> ci-dessous.\n"
+"                                Assurez-vous qu'elle n'a pas de phrase de passe (passphrase) pour que l'automatisation fonctionne."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "<i>No logs available (Empty response).</i>"
+msgstr "<i>Aucun journal disponible (Réponse vide).</i>"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_coolify.py:0
+msgid "API Error: {}"
+msgstr "Erreur API : {}"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__api_url
+msgid "API URL"
+msgstr "URL de l'API"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_needaction
+msgid "Action Needed"
+msgstr "Action requise"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_license
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__has_valid_license
+msgid "Active License"
+msgstr "Licence active"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_variable__is_preview
+msgid "Active for Preview deployments (PR)"
+msgstr "Actif pour les déploiements Preview (PR)"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Admin Login (SSO)"
+msgstr "Connexion Admin (SSO)"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_environment_all
+msgid "All Environments"
+msgstr "Tous les environnements"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_license_all
+msgid "All Licenses"
+msgstr "Toutes les licences"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid ""
+"Are you sure you want to modify the Docker configuration? This will "
+"overwrite the current configuration on Coolify."
+msgstr ""
+"Êtes-vous sûr de vouloir modifier la configuration Docker ? Cela écrasera "
+"la configuration actuelle sur Coolify."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Aucun master Coolify configuré sur le serveur associé."
+msgstr "Aucun master Coolify configuré sur le serveur associé."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__max_users
+msgid "Authorized Limit"
+msgstr "Limite autorisée"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_variable__is_build_time
+msgid "Available during Docker build"
+msgstr "Disponible lors de la construction Docker"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_form
+msgid "Billing"
+msgstr "Facturation"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__github_branch
+msgid "Branch"
+msgstr "Branche"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__is_build_time
+msgid "Build Time"
+msgstr "Build Time (Construction)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__instance_id
+msgid "Client Instance"
+msgstr "Instance client"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_instance
+msgid "Client Project (Instance)"
+msgstr "Projet client (Instance)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__instance_ids
+msgid "Client Projects"
+msgstr "Projets clients"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__audit_token
+msgid "Clé secrète partagée avec l'agent client pour le SSO et l'audit"
+msgstr "Clé secrète partagée avec l'agent client pour le SSO et l'audit"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_type_form
+msgid "Configuration Déploiement (Docker)"
+msgstr "Configuration Déploiement (Docker)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Configuration saved and deployment started!"
+msgstr "Configuration enregistrée et déploiement lancé !"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_coolify.py:0
+msgid "Connected to Coolify v{}"
+msgstr "Connecté à Coolify v{}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Connection established but no response from command 'whoami'."
+msgstr "Connexion établie mais aucune réponse de la commande 'whoami'."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Connection failed: {}"
+msgstr "Échec de la connexion : {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_coolify.py:0
+msgid "Connection impossible: {}"
+msgstr "Connexion impossible : {}"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_variable
+msgid "Coolify Environment Variable"
+msgstr "Variable d'environnement Coolify"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__coolify_id
+msgid "Coolify Instance (Master)"
+msgstr "Instance Coolify (Master)"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_coolify
+msgid "Coolify Instances"
+msgstr "Instances Coolify"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "Coolify Link"
+msgstr "Lien Coolify"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_coolify
+msgid "Coolify Master Instance"
+msgstr "Instance Master Coolify"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_coolify
+msgid "Coolify Masters"
+msgstr "Masters Coolify"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Coolify Update"
+msgstr "Mise à jour Coolify"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Coolify configuration not found via assigned server."
+msgstr "Configuration Coolify introuvable via le serveur assigné."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Coolify connection error: {}"
+msgstr "Erreur de connexion Coolify : {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"Coolify refused the request ({}):\n"
+"{}"
+msgstr ""
+"Coolify a refusé la demande ({}) :\n"
+"{}"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__exited
+msgid "Crashed / Error"
+msgstr "Crashé / Erreur"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_form
+msgid "Create Quotation"
+msgstr "Créer un devis"
+
+#. module: saas_manager
+#: model:ir.model,website_form_label:saas_manager.model_res_partner
+msgid "Create a Customer"
+msgstr "Créer un client"
+
+#. module: saas_manager
+#: model_terms:ir.actions.act_window,help:saas_manager.action_saas_environment_all
+msgid "Create your first Coolify instance!"
+msgstr "Créez votre première instance Coolify !"
+
+#. module: saas_manager
+#: model_terms:ir.actions.act_window,help:saas_manager.action_saas_instance
+msgid "Create your first instance."
+msgstr "Créez votre première instance."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__create_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__create_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_instance__status_overview__down
+msgid "Critical"
+msgstr "Critique"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "Créer Projet Coolify"
+msgstr "Créer Projet Coolify"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__partner_id
+msgid "Customer"
+msgstr "Client"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__postgres_uuid
+msgid "DB UUID"
+msgstr "UUID BDD"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_dashboard
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_dashboard
+msgid "Dashboard (Environments)"
+msgstr "Tableau de bord (Environnements)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Database not found."
+msgstr "Base de données introuvable."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__duration_months
+msgid "Default Duration (Months)"
+msgstr "Durée par défaut (Mois)"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Deployment Configuration"
+msgstr "Configuration de déploiement"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__env_type__dev
+msgid "Dev"
+msgstr "Dev"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_project_project__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_res_partner__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__display_name
+#: model:ir.model.fields,field_description:saas_manager.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_variable__is_literal
+msgid "Do not escape special characters"
+msgstr "Ne pas échapper les caractères spéciaux"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__docker_compose
+msgid "Docker Compose Content (Raw)"
+msgstr "Contenu Docker Compose (Brut)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Docker Compose content cannot be empty."
+msgstr "Le contenu Docker Compose ne peut pas être vide."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Docker Configuration (Compose)"
+msgstr "Configuration Docker (Compose)"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license__state__draft
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__date_end
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__env_count
+msgid "Env Count"
+msgstr "Nb Environnements"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__coolify_env_uuid
+msgid "Env UUID"
+msgstr "UUID Env"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__variable_ids
+msgid "Env Variables"
+msgstr "Variables d'env."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__env_id
+msgid "Environment"
+msgstr "Environnement"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__env_type
+msgid "Environment Type"
+msgstr "Type d'environnement"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Environment Variables (Secrets)"
+msgstr "Variables d'environnement (Secrets)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__environment_ids
+msgid "Environments"
+msgstr "Environnements"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Environnement Coolify '%s' créé."
+msgstr "Environnement Coolify '%s' créé."
+
+#. module: saas_manager
+#: model:mail.template,description:saas_manager.email_template_saas_renewal
+msgid "Envoyé lors du renouvellement automatique de licence"
+msgstr "Envoyé lors du renouvellement automatique de licence"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Erreur connexion Coolify : %s"
+msgstr "Erreur connexion Coolify : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Erreur création Projet Coolify (%s) : %s"
+msgstr "Erreur création Projet Coolify (%s) : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Erreur de connexion API : %s"
+msgstr "Erreur de connexion API : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Error cleaning file: {}"
+msgstr "Erreur lors du nettoyage du fichier : {}"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__exited
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__exited
+msgid "Exited"
+msgstr "Sorti (Exited)"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license__state__expired
+msgid "Expired"
+msgstr "Expiré"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnés (Partenaires)"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_server__ssh_key
+msgid "For Docker logs"
+msgstr "Pour les journaux Docker"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_license_type__product_id
+msgid "For invoicing"
+msgstr "Pour la facturation"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license_condition_module__behavior__forbidden
+msgid "Forbidden (Must not be installed)"
+msgstr "Interdit (Ne doit pas être installé)"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license__state__future
+msgid "Future"
+msgstr "Futur"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__github_url
+msgid "GitHub Repo URL"
+msgstr "URL du dépôt GitHub"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "GitHub Source"
+msgstr "Source GitHub"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__github_token
+msgid "GitHub Token (PAT)"
+msgstr "Jeton GitHub (PAT)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__coolify_uuid
+msgid "Global Service UUID"
+msgstr "UUID de service global"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__state
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__status_overview
+msgid "Global Status"
+msgstr "État global"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__group_xml_id
+msgid "Group XML ID"
+msgstr "ID XML du groupe"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__has_message
+msgid "Has Message"
+msgstr "A un message"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "Hosted Environments"
+msgstr "Environnements hébergés"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "Hosted Projects"
+msgstr "Projets hébergés"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__server_id
+msgid "Hosting Server"
+msgstr "Serveur d'hébergement"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_project_project__id
+#: model:ir.model.fields,field_description:saas_manager.field_res_partner__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__id
+#: model:ir.model.fields,field_description:saas_manager.field_sale_order__id
+msgid "ID"
+msgstr "ID"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si coché, de nouveaux messages nécessitent votre attention."
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__message_has_error
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si coché, certains messages ont une erreur de livraison."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Import from Coolify"
+msgstr "Importer depuis Coolify"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Impossible de créer l'environnement : %s"
+msgstr "Impossible de créer l'environnement : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Impossible de créer le projet Coolify (%s) : %s"
+msgstr "Impossible de créer le projet Coolify (%s) : %s"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_infrastructure
+msgid "Infrastructure"
+msgstr "Infrastructure"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "Instance"
+msgstr "Instance"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_res_partner__instance_count
+#: model:ir.model.fields,field_description:saas_manager.field_res_users__instance_count
+msgid "Instance Count"
+msgstr "Nombre d'instances"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__name
+msgid "Instance Name"
+msgstr "Nom de l'instance"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_instance
+#: model_terms:ir.ui.view,arch_db:saas_manager.project_project_view_form_inherit_saas
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_partner_form_saas
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_list
+msgid "Instances"
+msgstr "Instances"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_instance
+msgid "Instances (Clients)"
+msgstr "Instances (Clients)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/project.py:0
+msgid "Instances SaaS"
+msgstr "Instances SaaS"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_server.py:0
+msgid "Invalid key. Error: {}"
+msgstr "Clé invalide. Erreur : {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/controllers/main.py:0
+msgid "Invalid or unknown license."
+msgstr "Licence invalide ou inconnue."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_is_follower
+msgid "Is Follower"
+msgstr "Est abonné"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__key
+msgid "Key"
+msgstr "Clé"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_server__coolify_uuid
+msgid "L'ID du serveur dans l'interface Coolify"
+msgstr "L'ID du serveur dans l'interface Coolify"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_instance__coolify_uuid
+msgid "L'identifiant unique du Projet dans Coolify"
+msgstr "L'identifiant unique du Projet dans Coolify"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "La stack complète (Projet > Env > Service) a été initialisée."
+msgstr "La stack complète (Projet > Env > Service) a été initialisée."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__write_uid
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__write_uid
+msgid "Last Updated by"
+msgstr "Mis à jour par"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__write_date
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__write_date
+msgid "Last Updated on"
+msgstr "Mis à jour le"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__last_log
+msgid "Latest Logs"
+msgstr "Derniers journaux"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"Le Token d'Audit (Agent) n'est pas configuré. Il sert de clé secrète pour le"
+" SSO."
+msgstr ""
+"Le Token d'Audit (Agent) n'est pas configuré. Il sert de clé secrète pour le"
+" SSO."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"Le Token d'Audit est vide ou trop court. Veuillez configurer un secret fort."
+msgstr ""
+"Le Token d'Audit est vide ou trop court. Veuillez configurer un secret fort."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Le serveur physique sélectionné n'a pas d'UUID Coolify configuré."
+msgstr "Le serveur physique sélectionné n'a pas d'UUID Coolify configuré."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__license_count
+msgid "License Count"
+msgstr "Nombre de licences"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__type_id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__type_id
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_user__type_id
+msgid "License Type"
+msgstr "Type de licence"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_license_type
+msgid "License Type / Plan"
+msgstr "Type de licence / Plan"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_license_type
+#: model:ir.ui.menu,name:saas_manager.menu_saas_license_types
+msgid "License Types"
+msgstr "Types de licences"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/controllers/main.py:0
+msgid "License active."
+msgstr "Licence active."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "License {}"
+msgstr "Licence {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__license_ids
+#: model:ir.ui.menu,name:saas_manager.menu_saas_licenses_root
+msgid "Licenses"
+msgstr "Licences"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "Licenses & Subscriptions"
+msgstr "Licences et abonnements"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__product_id
+msgid "Linked Odoo Product"
+msgstr "Produit Odoo lié"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__project_id
+msgid "Linked Odoo Project"
+msgstr "Projet Odoo lié"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__is_literal
+msgid "Literal"
+msgstr "Littéral"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_kanban
+msgid "Logs"
+msgstr "Journaux"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__server_ids
+msgid "Managed Servers"
+msgstr "Serveurs gérés"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license_condition_module__behavior__mandatory
+msgid "Mandatory (Must be installed)"
+msgstr "Obligatoire (Doit être installé)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_has_error
+msgid "Message Delivery error"
+msgstr "Erreur d'envoi du message"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Missing SSH Key."
+msgstr "Clé SSH manquante."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_type_form
+msgid "Module Control"
+msgstr "Contrôle de module"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_license_condition_module
+msgid "Module Restriction"
+msgstr "Restriction de module"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__module_condition_ids
+msgid "Module Rules"
+msgstr "Règles de module"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__module_technical_name
+msgid "Module Technical Name"
+msgstr "Nom technique du module"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__name
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "New"
+msgstr "Nouveau"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__renewal_license_id
+msgid "Next License (Renewal)"
+msgstr "Prochaine licence (Renouvellement)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "No billable product is defined on this license type."
+msgstr "Aucun produit facturable n'est défini sur ce type de licence."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'actions"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Nombre de messages nécessitant une action"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Nombre de messages avec erreur d'envoi"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Odoo Console"
+msgstr "Console Odoo"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__odoo_image
+msgid "Odoo Image"
+msgstr "Image Odoo"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__odoo_logs
+msgid "Odoo Logs"
+msgstr "Journaux Odoo"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__odoo_master_password
+msgid "Odoo Master Password"
+msgstr "Mot de passe principal Odoo"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Odoo Security"
+msgstr "Sécurité Odoo"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Odoo Service"
+msgstr "Service Odoo"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__odoo_status
+msgid "Odoo Status"
+msgstr "Statut Odoo"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__odoo_uuid
+msgid "Odoo UUID"
+msgstr "UUID Odoo"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Odoo application not found in this service."
+msgstr "Application Odoo introuvable dans ce service."
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_instance__status_overview__ok
+msgid "Operational"
+msgstr "Opérationnel"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__instance_id
+msgid "Parent Instance"
+msgstr "Instance parente"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Pas d'URL définie pour cet environnement."
+msgstr "Pas d'URL définie pour cet environnement."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Pas de licence valide pour récupérer le template Docker."
+msgstr "Pas de licence valide pour récupérer le modèle Docker."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_form
+msgid "Period"
+msgstr "Période"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_server
+msgid "Physical Server / Worker"
+msgstr "Serveur physique / Worker"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__name
+msgid "Plan Name"
+msgstr "Nom du plan"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_config_plans
+msgid "Plans & Pricing"
+msgstr "Plans & Tarifs"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "Please generate the quotation first."
+msgstr "Veuillez d'abord générer le devis."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "PostgreSQL Console"
+msgstr "Console PostgreSQL"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "PostgreSQL Service"
+msgstr "Service PostgreSQL"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__postgres_image
+msgid "Postgres Image"
+msgstr "Image Postgres"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__postgres_logs
+msgid "Postgres Logs"
+msgstr "Journaux Postgres"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__postgres_status
+msgid "Postgres Status"
+msgstr "Statut Postgres"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__is_preview
+msgid "Preview"
+msgstr "Aperçu (Preview)"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__env_type__production
+msgid "Prod"
+msgstr "Prod"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Projet Coolify créé avec succès : %s"
+msgstr "Projet Coolify créé avec succès : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Provisioning Réussi"
+msgstr "Provisioning réussi"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__ssh_ip
+msgid "Public IP"
+msgstr "IP publique"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__domain_url
+msgid "Public URL"
+msgstr "URL publique"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Push to Coolify"
+msgstr "Pousser vers Coolify"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/controllers/main.py:0
+msgid "Quota exceeded: {count}/{max} users."
+msgstr "Quota dépassé : {count}/{max} utilisateurs."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_form
+msgid "Quotation"
+msgstr "Devis"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "Quotation / Order"
+msgstr "Devis / Commande"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "Quotation Created"
+msgstr "Devis créé"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "Quotation {} has been generated."
+msgstr "Le devis {} a été généré."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__rating_ids
+msgid "Ratings"
+msgstr "Évaluations"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Refresh Logs & Status"
+msgstr "Actualiser journaux & statut"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__sale_order_id
+msgid "Renewal Quotation"
+msgstr "Devis de renouvellement"
+
+#. module: saas_manager
+#: model:mail.template,subject:saas_manager.email_template_saas_renewal
+msgid ""
+"Renouvellement de votre licence {{ object.client_order_ref or 'SaaS' }}"
+msgstr ""
+"Renouvellement de votre licence {{ object.client_order_ref or 'SaaS' }}"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_kanban
+msgid "Restart"
+msgstr "Redémarrer"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Restart All"
+msgstr "Redémarrer tout"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__restarting
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__restarting
+msgid "Restarting"
+msgstr "Redémarrage"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__restarting
+msgid "Restarting..."
+msgstr "Redémarrage..."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_condition_module__behavior
+msgid "Rule"
+msgstr "Règle"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__running
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__running
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__running
+msgid "Running"
+msgstr "En cours"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Erreur d'envoi SMS"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "SSH Access (Docker)"
+msgstr "Accès SSH (Docker)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_server.py:0
+msgid "SSH Connection OK on {}"
+msgstr "Connexion SSH OK sur {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_server.py:0
+msgid "SSH Error: {}"
+msgstr "Erreur SSH : {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_server.py:0
+msgid "SSH Key missing on Server record."
+msgstr "Clé SSH manquante sur l'enregistrement du serveur."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__ssh_port
+msgid "SSH Port"
+msgstr "Port SSH"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__ssh_key
+msgid "SSH Private Key"
+msgstr "Clé privée SSH"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid ""
+"SSH connection operational.\n"
+"Server: {}\n"
+"User detected: {}"
+msgstr ""
+"Connexion SSH opérationnelle.\n"
+"Serveur : {}\n"
+"Utilisateur détecté : {}"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_license.py:0
+msgid "SaaS License Renewal - {} ({} to {})"
+msgstr "Renouvellement de licence SaaS - {} ({} au {})"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/sale_order.py:0
+msgid "SaaS License automatically activated following confirmation."
+msgstr "Licence SaaS activée automatiquement suite à la confirmation."
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_root
+msgid "SaaS Manager"
+msgstr "SaaS Manager"
+
+#. module: saas_manager
+#: model:ir.actions.server,name:saas_manager.ir_cron_saas_license_renewal_ir_actions_server
+msgid "SaaS Manager: Auto License Renewal"
+msgstr "SaaS Manager : Renouvellement automatique de licence"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/res_partner.py:0
+msgid "SaaS Projects / Instances"
+msgstr "Projets SaaS / Instances"
+
+#. module: saas_manager
+#: model:mail.template,name:saas_manager.email_template_saas_renewal
+msgid "SaaS: Renouvellement Licence"
+msgstr "SaaS : Renouvellement Licence"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_project_project__saas_instance_count
+msgid "Saas Instance Count"
+msgstr "Nombre d'instances SaaS"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_sale_order
+msgid "Sales Order"
+msgstr "Commande client"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Save to Coolify"
+msgstr "Enregistrer sur Coolify"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "Security & SSH Key"
+msgstr "Sécurité & Clé SSH"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_form
+msgid "Send by Email"
+msgstr "Envoyer par e-mail"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__name
+msgid "Server Name"
+msgstr "Nom du serveur"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Server not configured for this instance."
+msgstr "Serveur non configuré pour cette instance."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_coolify_form
+msgid "Servers"
+msgstr "Serveurs"
+
+#. module: saas_manager
+#: model:ir.actions.act_window,name:saas_manager.action_saas_server
+msgid "Servers (Workers)"
+msgstr "Serveurs (Workers)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Service Docker créé avec succès. UUID: %s"
+msgstr "Service Docker créé avec succès. UUID : %s"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Service Instance"
+msgstr "Instance de service"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Service UUID (Stack)"
+msgstr "UUID du service (Stack)"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__env_type__staging
+msgid "Staging"
+msgstr "Staging"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_kanban
+msgid "Start"
+msgstr "Démarrer"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Start All"
+msgstr "Démarrer tout"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__date_start
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__starting
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__starting
+msgid "Starting"
+msgstr "Démarrage"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__starting
+msgid "Starting..."
+msgstr "Démarrage..."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__state
+msgid "Status"
+msgstr "Statut"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_kanban
+msgid "Stop"
+msgstr "Arrêter"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Stop All"
+msgstr "Arrêter tout"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__stopped
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__stopped
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__stopped
+msgid "Stopped"
+msgstr "Arrêté"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_coolify.py:0
+#: code:addons/saas_manager/models/saas_environment.py:0
+#: code:addons/saas_manager/models/saas_server.py:0
+msgid "Success"
+msgstr "Succès"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "Success!"
+msgstr "Succès !"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_environment
+msgid "Technical Environment (Coolify)"
+msgstr "Environnement technique (Coolify)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Technical Error: {}"
+msgstr "Erreur technique : {}"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__docker_compose_template
+msgid "Template Docker Compose"
+msgstr "Modèle Docker Compose"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Template Docker vide sur le type de licence."
+msgstr "Modèle Docker vide sur le type de licence."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_coolify_form
+msgid "Test Connection"
+msgstr "Tester la connexion"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "Test SSH"
+msgstr "Test SSH"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "Test SSH Connection"
+msgstr "Tester la connexion SSH"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid ""
+"This will create the Project, Environment, and Service on Coolify. Are you "
+"sure?"
+msgstr ""
+"Cela créera le projet, l'environnement et le service sur Coolify. Êtes-vous "
+"sûr ?"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_coolify__api_token
+msgid "Token (Bearer)"
+msgstr "Jeton (Bearer)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__audit_token
+msgid "Token Agent (Secret)"
+msgstr "Jeton Agent (Secret)"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "UUID Projet (Coolify)"
+msgstr "UUID Projet (Coolify)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__coolify_uuid
+msgid "UUID Projet Coolify"
+msgstr "UUID Projet Coolify"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__coolify_uuid
+msgid "UUID Serveur (Coolify)"
+msgstr "UUID Serveur (Coolify)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license__token
+msgid "Unique Token"
+msgstr "Jeton unique"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__odoo_status__unknown
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__postgres_status__unknown
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__unknown
+msgid "Unknown"
+msgstr "Inconnu"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_environment__state__warning
+msgid "Unstable / Mixed"
+msgstr "Instable / Mixte"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid ""
+"Unsupported key format or invalid key.\n"
+"Last error: {}\n"
+"\n"
+"Tip: Use a standard RSA or Ed25519 key (OpenSSH format)."
+msgstr ""
+"Format de clé non supporté ou clé invalide.\n"
+"Dernière erreur : {}\n"
+"\n"
+"Conseil : Utilisez une clé standard RSA ou Ed25519 (format OpenSSH)."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_type_form
+msgid "Usage Conditions (Audit)"
+msgstr "Conditions d'utilisation (Audit)"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_server__ssh_user
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: saas_manager
+#: model:ir.model,name:saas_manager.model_saas_license_condition_user
+msgid "User Limit per Group"
+msgstr "Limite utilisateur par groupe"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_license_type_form
+msgid "User Limits"
+msgstr "Limites utilisateurs"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_license_type__user_condition_ids
+msgid "User Quotas"
+msgstr "Quotas utilisateurs"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_license__state__valid
+msgid "Valid"
+msgstr "Valide"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_variable__value
+msgid "Value"
+msgstr "Valeur"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Variables updated (Bulk Mode)."
+msgstr "Variables mises à jour (Mode Bulk)."
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_instance__coolify_id
+msgid "Via Coolify"
+msgstr "Via Coolify"
+
+#. module: saas_manager
+#: model:ir.model.fields.selection,name:saas_manager.selection__saas_instance__status_overview__warning
+msgid "Warning"
+msgstr "Avertissement"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "Warning: This will overwrite variables on Coolify. Continue?"
+msgstr "Attention : Cela écrasera les variables sur Coolify. Continuer ?"
+
+#. module: saas_manager
+#: model:ir.model.fields,field_description:saas_manager.field_saas_environment__website_message_ids
+msgid "Website Messages"
+msgstr "Messages du site web"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_environment__website_message_ids
+msgid "Website communication history"
+msgstr "Historique de communication du site web"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_server_form
+msgid "Worker 01"
+msgstr "Worker 01"
+
+#. module: saas_manager
+#: model:ir.ui.menu,name:saas_manager.menu_saas_server
+msgid "Workers (Servers)"
+msgstr "Workers (Serveurs)"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/controllers/main.py:0
+msgid "Your license has expired. Please renew."
+msgstr "Votre licence a expiré. Veuillez renouveler."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"[FATAL ERROR] Cannot fetch data for UUID {}. Check if it is a Service or "
+"Application and if Token has read rights."
+msgstr ""
+"[ERREUR FATALE] Impossible de récupérer les données pour l'UUID {}. Vérifiez "
+"s'il s'agit d'un service ou d'une application et si le jeton a les droits de lecture."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_coolify_form
+msgid "e.g. Production Master"
+msgstr "ex: Master Production"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_license_condition_module__module_technical_name
+msgid "e.g. account_accountant"
+msgstr "ex: account_accountant"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_coolify__api_url
+msgid "e.g. https://app.coolify.io"
+msgstr "ex: https://app.coolify.io"
+
+#. module: saas_manager
+#: model:ir.model.fields,help:saas_manager.field_saas_license_condition_user__group_xml_id
+msgid "e.g. sales_team.group_sale_manager"
+msgstr "ex: sales_team.group_sale_manager"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_instance_form
+msgid "ex: Instance Production"
+msgstr "ex: Instance de production"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "ghp_..."
+msgstr "ghp_..."
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "https://..."
+msgstr "https://..."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "instance_id"
+msgstr "instance_id"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/res_partner.py:0
+msgid "partner_id"
+msgstr "partner_id"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/project.py:0
+msgid "project_id"
+msgstr "project_id"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid ""
+"services:\n"
+"  odoo:..."
+msgstr ""
+"services:\n"
+"  odoo:..."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "{} Don't forget to RESTART the service to apply!"
+msgstr "{} N'oubliez pas de REDÉMARRER le service pour appliquer !"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "{} variables fetched."
+msgstr "{} variables récupérées."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "{} variables updated (Iterative Mode)."
+msgstr "{} variables mises à jour (Mode Itératif)."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "Échec création Service : %s"
+msgstr "Échec création Service : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid ""
+"⚠️ Container '{}' not found.\n"
+"However, found these containers linked to UUID:\n"
+"{}\n"
+"Check the keyword."
+msgstr ""
+"⚠️ Conteneur '{}' introuvable.\n"
+"Cependant, j'ai trouvé ces conteneurs liés à l'UUID :\n"
+"{}\n"
+"Vérifiez le mot-clé recherché."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "✅ Container '{}' found, but logs are empty."
+msgstr "✅ Conteneur '{}' trouvé, mais les journaux sont vides."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_instance.py:0
+msgid "✅ Projet Coolify créé avec succès. UUID : %s"
+msgstr "✅ Projet Coolify créé avec succès. UUID : %s"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "❌ No container found on server matching UUID '{}'."
+msgstr "❌ Aucun conteneur trouvé sur le serveur correspondant à l'UUID '{}'."
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/models/saas_environment.py:0
+msgid "🔥 SSH Technical Error: {}"
+msgstr "🔥 Erreur technique SSH : {}"
+
+#. module: saas_manager
+#: model_terms:ir.ui.view,arch_db:saas_manager.view_saas_environment_form_split
+msgid "🚀 Deploy Full Stack"
+msgstr "🚀 Déployer la stack complète"
+
+#. module: saas_manager
+#. odoo-python
+#: code:addons/saas_manager/controllers/main.py:0
+msgid "🚨 ALERT: IP change detected! Old: {old_ip} -> New: {new_ip}"
+msgstr "🚨 ALERTE : Changement d'IP détecté ! Ancienne : {old_ip} -> Nouvelle : {new_ip}"

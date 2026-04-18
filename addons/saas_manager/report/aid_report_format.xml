@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_victim_a3" model="report.paperformat">
+        <field name="name">Victim A3 Landscape No Margin</field>
+        <field name="format">A3</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">4</field>
+        <field name="margin_bottom">4</field>
+        <field name="margin_left">4</field>
+        <field name="margin_right">4</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="action_report_aid_victim" model="ir.actions.report">
+        <field name="name">Fiche bilan victime</field>
+        <field name="model">aid.victim</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">victim.report_aid_victim</field>
+        <field name="report_file">victim.report_aid_victim</field>
+        <field name="paperformat_id" ref="paperformat_victim_a3"/>
+        <field name="print_report_name">'Fiche_%s' % (object.id)</field>
+        <field name="binding_model_id" ref="victim.model_aid_victim"/>
+    </record>
+</odoo>

@@ -1,0 +1,2004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_aid_victim">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <t t-set="company" t-value="o.env.company"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-6 px-2">
+                                <table class="hse-band">
+                                    <tr>
+                                        <td class="hse-left" align="center">
+                                            <img t-att-src="'/web/image/res.company/%s/logo' % company.id" style="max-height:26px;"/>
+                                            <div class="muted" style="margin-top:2px;">
+                                                Doc. Référence&amp;nbsp;:
+                                                <span>Sec/HSE/008</span>
+                                            </div>
+                                        </td>
+
+                                        <td class="hse-center">
+                                            <div class="hse-title">FICHE BILAN / EVENEMENT</div>
+                                            <div class="hse-subtitle">(BLESSE – MALADIE – SOIN)</div>
+                                        </td>
+
+                                        <td class="hse-right">
+                                            <div class="hse-consigne">
+                                                <strong>CONSIGNE</strong>
+                                                <br/>2.38 rev2
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="center" class="muted" style="font-size: 16px;">
+                                            Fiche à remplir pour tout évènement impliquant une victime, qui
+                                            est à établir par CA, PI ou SST sur site cabines.
+                                            <br/>
+                                            Elle sera à transmettre à l’infirmerie et à joindre au rapport
+                                            d’intervention ISP*1.
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                                <table class="tbl" style="width:100%; border-collapse:collapse; table-layout:fixed;">
+    <tbody>
+
+        <tr>
+            <td style="width:40%; white-space:nowrap;">
+                <span class="txt-underline">Date et heure de l’accident :</span>
+            </td>
+            <td style="width:60%; white-space:nowrap;">
+                <t t-if="o.date_start">
+                    <span t-field="o.date_start"
+                          t-options='{"widget":"datetime"}'/>
+                </t>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width:40%; white-space:nowrap;">
+                <span class="txt-underline">Heure de l’appel :</span>
+            </td>
+            <td style="width:60%; white-space:nowrap;">
+                <t t-if="o.call_time">
+                    <span t-field="o.call_time"
+                          t-options='{"widget":"float_time"}'/>
+                </t>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width:40%; white-space:nowrap;">
+                <span class="txt-underline">Heure de la prise en charge :</span>
+            </td>
+            <td style="width:60%; white-space:nowrap;">
+                <t t-if="o.care_start_time">
+                    <span t-field="o.care_start_time"
+                          t-options='{"widget":"float_time"}'/>
+                </t>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+                                <table class="tbl tight" style="margin-top:6px;">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2"
+                                                style="background:#F39B2E; color:#000; text-align:center; font-weight:700;">
+                                                ETAT CIVIL DE LA VICTIME
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td width="60%;">
+                                                <strong>Nom :</strong>
+                                                <span t-esc="o.last_name or '.....'"/>
+                                            </td>
+                                            <td width="40%;">
+                                                <strong>Matricule :</strong>
+                                                <span t-esc="o.employee_code or '.....'"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%;">
+                                                <strong>Prénom :</strong>
+                                                <span t-esc="o.first_name or '.....'"/>
+                                            </td>
+                                            <td width="40%;">
+                                                <strong>Nationalité :</strong>
+                                                <span t-esc="o.nationality or '.....'"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%;">
+                                                <strong>Date de naissance :</strong>
+                                                <t t-if="o.birth_date">
+                                                    <span t-field="o.birth_date" t-options='{"widget":"date"}'/>
+                                                </t>
+                                            </td>
+                                            <td width="40%;">
+                                                <strong>Âge :</strong>
+                                                <span t-esc="o.age_years or '.....'"/> ans
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="60%;">
+                                                <strong>Sexe :&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</strong>
+                                                <span class="box">
+                                                    <span t-att-class="'fa fa-check-square-o' if o.gender == 'm' else 'fa fa-square-o'"></span>
+                                                    H
+                                                </span>&amp;nbsp;&amp;nbsp;
+                                                <span class="box">
+                                                    <span t-att-class="'fa fa-check-square-o' if o.gender == 'f' else 'fa fa-square-o'"></span>
+                                                    F
+                                                </span>
+                                            </td>
+                                            <td width="40%;">
+                                                <strong>Société :</strong>
+                                                <span t-esc="o.company or '.....'"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <strong>Nom et matricule du N+1 :</strong>
+                                                <span t-esc="o.manager_name or '.....'"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="tbl tight bc" style="margin-top:6px;">
+    <thead>
+        <tr>
+            <th colspan="5" class="head">BILAN CIRCONSTANCIEL</th>
+        </tr>
+    </thead>
+
+    <tbody class="zone">
+        <tr class="subhead">
+            <td colspan="5">LIEU DE L’INTERVENTION</td>
+        </tr>
+        <tr style="background:#E8E8E8;">
+            <td class="small">
+                <div class="box">
+                    <span t-att-class="'fa fa-check-square-o' if o.location_type=='ship' else 'fa fa-square-o'"></span>
+                    NAVIRE/OUVRAGE
+                    <t t-if="o.location_type=='ship'">
+                        <div>
+                            <span t-esc="o.ship_name or '.....'"/><br/>
+                            <span t-esc="o.location_details or '.....'"/>
+                        </div>
+                        <br/>
+                        Lot/local
+                        <br/>
+                        <span t-esc="o.ship_local or '.....'"/>
+                    </t>
+                    <t t-else="">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </t>
+                </div>
+            </td>
+            <td class="small">
+                <div class="box">
+                    <span t-att-class="'fa fa-check-square-o' if o.location_type=='workshop' else 'fa fa-square-o'"></span>
+                    ATELIER
+                    <div>
+                        <t t-if="o.location_type=='workshop'" t-esc="o.workshop_name or '.....'"/><br/>
+                        <span t-if="o.location_type=='workshop'" t-esc="o.location_details or '.....'"/>
+                    </div>
+                </div>
+            </td>
+            <td class="small">
+                <div class="box">
+                    <span t-att-class="'fa fa-check-square-o' if o.location_type=='site' else 'fa fa-square-o'"></span>
+                    SITE
+                    <div>
+                        <t t-if="o.location_type=='site'" t-esc="o.workshop_name or '.....'"/>
+                    </div>
+                </div>
+            </td>
+            <td class="small">
+                <div class="box">
+                    <span t-att-class="'fa fa-check-square-o' if o.location_type=='public' else 'fa fa-square-o'"></span>
+                    VOIE PUBLIQUE
+                    <t t-if="o.location_type=='public'" t-esc="o.location_type"/>
+                    <div>
+                        <t t-if="o.location_type=='public'" t-esc="o.workshop_name or '.....'"/>
+                    </div>
+                </div>
+            </td>
+            <td class="small">
+                <div class="box" style="margin-top:4px;">
+                    <span t-att-class="'fa fa-check-square-o' if o.location_type=='other' else 'fa fa-square-o'"></span>
+                    AUTRE
+                    <div>
+                        <t t-if="o.location_type=='other'" t-esc="o.workshop_name or '.....'"/>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <!-- ===== BLESSÉ / INTOXICATION / AUTRE MOTIF ===== -->
+
+        <table class="trirow">
+            <tr>
+                <!-- Col 1: Blessé par -->
+                <td style="width:34%;">
+                    <div class="head radio">Blessé par :</div>
+                    <br/>
+                    <div class="box small">
+                        <span t-att-class="'fa fa-check-square-o' if (o.type_intervention=='injured' and o.is_fall) else 'fa fa-square-o'"></span>
+                        Chute :
+                        <span class="dots" style="min-width:40px;">
+                            <span t-esc="o.distance_fall or '.....'"/>
+                        </span>
+                        m /
+                        Étage
+                        <span class="dots" style="min-width:40px;">
+                            <span t-esc="o.floor_fall or '.....'"/>
+                        </span>
+                    </div>
+
+                    <div class="small" style="margin:4px 0 2px 16px;">
+                        <i>Préciser type de chute :</i>
+                        <span t-esc="o.type_of_fall or '.....'"/>
+                    </div>
+
+                    <div class="box small" style="margin-top:6px;">
+                        <span t-att-class="'fa fa-check-square-o' if (o.type_intervention=='injured' and o.is_other_injured) else 'fa fa-square-o'"></span>
+                        Autre
+                        <span t-esc="o.type_of_fall or '.....'"/>
+                    </div>
+                </td>
+
+                <!-- Col 2: Intoxication par (blue, 2 columns) -->
+                <td style="width:33%;">
+                    <div class="head radio">Intoxication par :</div>
+                    <br/>
+                    <div class="blue cols2 small">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_alcohol else 'fa fa-square-o'"></span>
+                                    Alcool
+                                </div>
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_medication else 'fa fa-square-o'"></span>
+                                    Médicaments
+                                </div>
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_household_product else 'fa fa-square-o'"></span>
+                                    Produit ménager
+                                </div>
+
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_smoke else 'fa fa-square-o'"></span>
+                                    Fumée
+                                </div>
+
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_co_ppm else 'fa fa-square-o'"></span>
+                                    CO <span t-esc="o.exposure_co_ppm or '……'"/> PPM
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_drug else 'fa fa-square-o'"></span>
+                                    Drogue
+                                </div>
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_chemical else 'fa fa-square-o'"></span>
+                                    Produit chimique
+                                </div>
+                                <div class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if o.exposure_gas else 'fa fa-square-o'"></span>
+                                    Gaz
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- Col 3: Autre motif (blue, single column) -->
+                <td style="width:33%;">
+                    <div class="head radio">Autre motif :</div>
+                    <br/>
+                    <div class="blue small">
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.reason_illness else 'fa fa-square-o'"></span>
+                            Malaise - Maladie
+                        </div>
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.reason_premature_labor else 'fa fa-square-o'"></span>
+                            Menace d’accouchement
+                        </div>
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.reason_burn else 'fa fa-square-o'"></span>
+                            Brûlure
+                        </div>
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.reason_drowning else 'fa fa-square-o'"></span>
+                            Noyade
+                        </div>
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.reason_strangulation else 'fa fa-square-o'"></span>
+                            Pendaison - Strangulation
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- ===== /BLOCK ===== -->
+
+        <!-- ===== ACCIDENT DE LA CIRCULATION (avec icônes) ===== -->
+
+        <table class="traf">
+            <tr>
+                <td colspan="5" class="head">
+                    <span style="font-family:'DejaVu Sans',sans-serif;">○</span>
+                    Accident de la circulation :
+                </td>
+            </tr>
+            <tr>
+                <!-- ① Piéton -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='pedestrian' else '')" style="padding:12px">
+                    <span class="num">1</span>
+                    <t t-if="o.vehicle_kind=='pedestrian'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="600" y1="200" x2="0" y2="200" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/pedestrian.png'"/>
+                </td>
+                <!-- ② Vélo -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='bicycle' else '')" style="padding:12px">
+                    <span class="num">2</span>
+                    <t t-if="o.vehicle_kind=='bicycle'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="600" y1="200" x2="0" y2="200" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/bicycle.png'"/>
+                </td>
+                <!-- ③ VL (voiture) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='passenger_car' else '')" style="padding:12px">
+                    <span class="num">3</span>
+                    <t t-if="o.vehicle_kind=='passenger_car'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="600" y1="200" x2="0" y2="200" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/car.png'"/>
+                </td>
+                <!-- ④ Fourgon -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='van' else '')" style="padding:12px">
+                    <span class="num">4</span>
+                    <t t-if="o.vehicle_kind=='van'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="600" y1="200" x2="0" y2="200" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/van.png'"/>
+                </td>
+                <!-- ⑤ PL (poids lourd) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='heavy_truck' else '')" style="padding:12px">
+                    <span class="num">5</span>
+                    <t t-if="o.vehicle_kind=='heavy_truck'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="600" y1="200" x2="0" y2="200" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/truck.png'"/>
+                </td>
+            </tr>
+            <tr>
+                <!-- ⑥ Nacelle flèche (boom lift) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='boom_lift' else '')" style="padding:12px">
+                    <span class="num">6</span>
+                    <t t-if="o.vehicle_kind=='boom_lift'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="100" y1="0" x2="0" y2="100" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/boom_lift.png'"/>
+                </td>
+                <!-- ⑦ Nacelle ciseaux (scissor lift) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='scissor_lift' else '')" style="padding:12px">
+                    <span class="num">7</span>
+                    <t t-if="o.vehicle_kind=='scissor_lift'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="100" y1="0" x2="0" y2="100" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/scissor_lift.png'"/>
+                </td>
+                <!-- ⑧ Pelle (excavator) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='excavator' else '')" style="padding:12px">
+                    <span class="num">8</span>
+                    <t t-if="o.vehicle_kind=='excavator'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="100" y1="0" x2="0" y2="100" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/excavator.png'"/>
+                </td>
+                <!-- ⑨ Chariot élévateur (forklift) -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='forklift' else '')" style="padding:12px">
+                    <span class="num">9</span>
+                    <t t-if="o.vehicle_kind=='forklift'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="100" y1="0" x2="0" y2="100" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <img class="img" t-att-src="'/victim/static/src/img/traffic/forklift.png'"/>
+                </td>
+                <!-- ⑩ Autre -->
+                <td t-att-class="'cell' + (' bg-ok' if o.vehicle_kind=='other' else '')" style="padding:12px">
+                    <span class="num">10</span>
+                    <t t-if="o.vehicle_kind=='other'">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 100 100"
+                             preserveAspectRatio="none"
+                             style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                            <line x1="100" y1="0" x2="0" y2="100" stroke="#000" stroke-width="3"/>
+                        </svg>
+                    </t>
+                    <div style="margin-top:2px;text-align:left;"><span>Autre : </span>
+                        <span t-esc="o.vehicle_kind_other or '.....'"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- ===== /ACCIDENT DE LA CIRCULATION ===== -->
+        <!-- ===== CINÉTIQUE / SITUATION INITIALE ===== -->
+        <!-- ====== CINETIQUE DE L'ACCIDENT / SITUATION INITIALE ====== -->
+        <div class="kin">
+            <table>
+                <tr style="border-bottom:0;">
+                    <th style="width:60%; border-bottom:0;" class="text-start">
+                        <strong>Cinétique de l’accident :</strong>
+                    </th>
+                    <th style="width:40%; border-bottom:0;">Situation initiale de la victime :</th>
+                </tr>
+                <tr style="border-top:0;">
+                    <!-- GAUCHE : Cinétique -->
+                    <td class="tiny" style="border-top:0;">
+                        <div>
+                            Vitesse estimée au moment du choc :
+                            <span t-esc="o.speed_at_impact_kmh or '.....'"/>
+                            km/h
+                            &amp;nbsp;&amp;nbsp; Tonneaux :
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.rollover else 'fa fa-square-o'"></span>
+                                Oui
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if (o.rollover is False) else 'fa fa-square-o'"></span>
+                                Non
+                            </span>
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <span style="font-weight:700">Type de choc</span>
+                            <span class="box" style="margin-left:6px">
+                                <span t-att-class="'fa fa-check-square-o' if o.impact_type=='frontal' else 'fa fa-square-o'"></span>
+                                Frontal
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.impact_type=='lateral' else 'fa fa-square-o'"></span>
+                                Latéral
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.impact_type=='fronto_lateral' else 'fa fa-square-o'"></span>
+                                Fronto-Latéral
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.impact_type=='rear' else 'fa fa-square-o'"></span>
+                                Arrière
+                            </span>
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <span style="font-weight:700">Position du véhicule</span>
+                            <span class="box" style="margin-left:6px">
+                                <span t-att-class="'fa fa-check-square-o' if o.vehicle_position=='on_wheels' else 'fa fa-square-o'"></span>
+                                Sur ses roues
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.vehicle_position=='on_side' else 'fa fa-square-o'"></span>
+                                Sur le côté
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.vehicle_position=='on_roof' else 'fa fa-square-o'"></span>
+                                Sur le toit
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.vehicle_position=='in_ditch' else 'fa fa-square-o'"></span>
+                                Dans un fossé
+                            </span>
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <span style="font-weight:700">Équipement de sécurité au profit de la victime :</span>
+                            <br/>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.airbag_present else 'fa fa-square-o'"></span>
+                                Airbag
+                            </span>
+                            &amp;nbsp; Déclenchement
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.airbag_deployed else 'fa fa-square-o'"></span>
+                                Oui
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if (o.airbag_present and not o.airbag_deployed) else 'fa fa-square-o'"></span>
+                                Non
+                            </span>
+                            <br/>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.seatbelt_fastened else 'fa fa-square-o'"></span>
+                                Ceinture de sécurité
+                            </span>
+                            &amp;nbsp;&amp;nbsp;
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.headrest_present else 'fa fa-square-o'"></span>
+                                Appui tête
+                            </span>
+                            <br/>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.helmet_worn else 'fa fa-square-o'"></span>
+                                Casque
+                            </span>
+                            &amp;nbsp;&amp;nbsp; Équipement du motard : Type <span t-esc="o.motorcyclist_equipment_type"/>
+                        </div>
+                    </td>
+
+                    <!-- DROITE : Situation initiale -->
+                    <td class="tiny" style="border-top:0;">
+                        <div>
+                            <span style="font-weight:700">Conducteur</span>
+                            <span class="box" style="margin-left:6px">
+                                <span t-att-class="'fa fa-check-square-o' if o.victim_seat_row=='driver' else 'fa fa-square-o'"></span>
+                            </span>
+                        </div>
+                        <div>
+                            <span style="font-weight:700">Passager</span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.victim_seat_row=='front_passenger' else 'fa fa-square-o'"></span>
+                                Avant
+                            </span>
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.victim_seat_row=='rear_passenger' else 'fa fa-square-o'"></span>
+                                Arrière
+                            </span>
+                        </div>
+
+                        <div style="margin-top:3px;font-weight:700">Situation à l’arrivée des secours :</div>
+                        <div class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.status_out_of_vehicle else 'fa fa-square-o'"></span>
+                            Sortie du véhicule
+                            &amp;nbsp;&amp;nbsp;
+                            <span t-att-class="'fa fa-check-square-o' if o.status_initial_position else 'fa fa-square-o'"></span>
+                            Position initiale
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <div class="chip chipBlue">
+                                <span t-att-class="'fa fa-check-square-o' if o.status_trapped_t0 else 'fa fa-square-o'"></span>Piégée T0
+                            </div>
+                            &amp;nbsp;
+                            <div class="chip chipRed">
+                                <span t-att-class="'fa fa-check-square-o' if o.status_incarcerated_t1 else 'fa fa-square-o'"></span>Incarcérée T1
+                            </div>
+                            &amp;nbsp;
+                            <div class="chip chipRed">
+                                <span t-att-class="'fa fa-check-square-o' if o.status_incarcerated_type2 else 'fa fa-square-o'"></span>Type 2
+                            </div>
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if (o.ejected_projected or o.status_projected) else 'fa fa-square-o'"></span>
+                                Éjectée / Projetée
+                            </span>
+                            &amp;nbsp; à :
+                            <span t-esc="o.projection_distance_m or '.....'"/>
+                            m
+                        </div>
+
+                        <div style="margin-top:3px">
+                            <span class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.helmet_removed else 'fa fa-square-o'"></span>
+                                Casque retiré
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="subhead">
+                    <td colspan="4" class="text-center" style="height:90px;">
+                        <strong>QUE S’EST-IL PASSÉ AVANT L’ARRIVÉE DES SECOURS ?</strong>
+                        <br/>
+                        <span t-esc="o.note_before or '.....'"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- ====== /CINETIQUE + SITUATION INITIALE ====== -->
+
+        <!-- ===== BILAN PRIMAIRE (ABCDE) ===== -->
+        <table class="bp2">
+              <colgroup>
+                <col style="width:5%;"/>
+                <col style="width:35%;"/>
+                <col style="width:60%;"/>
+              </colgroup>
+            <!-- En-tête -->
+            <tr>
+                <th class="head" colspan="3">
+                    BILAN PRIMAIRE | Transmis à :
+                    <t t-set="samu_time" t-value="o.samu_call_time if o.samu_call_time else o.site_nurse_time"/>
+                    <t t-if="samu_time" t-esc="samu_time" t-options='{"widget":"float_time"}'/>
+                </th>
+            </tr>
+
+            <!-- A -->
+            <tr>
+                <td class="band A">A</td>
+                <td class="col-red">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.voie_air_obstruction else 'fa fa-square-o'"></span>
+                        Obstruction des voies aériennes
+                    </span>
+                </td>
+                <td class="col-blue">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.foreign_body else 'fa fa-square-o'"></span>
+                        Corps étranger
+                    </span>
+                    &amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.noise_voie_air else 'fa fa-square-o'"></span>
+                        Bruits
+                    </span>
+                    <br/>
+                    <span>Autre : </span>
+                    <span t-esc="o.voie_air_other or '.....'"/>
+                </td>
+            </tr>
+
+            <!-- B -->
+            <tr>
+                <td class="band B">B</td>
+
+                <!-- col 2 : rouge -->
+                <td class="col-red">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.resp_arret else 'fa fa-square-o'"></span>
+                        Arrêt respiratoire
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.detresse_respiratoire else 'fa fa-square-o'"></span>
+                        Détresse respiratoire
+                    </span>
+                </td>
+
+                <!-- col 3 : bleue -->
+                <td class="col-blue">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.cyanosis else 'fa fa-square-o'"></span>
+                        Cyanose
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.sweating else 'fa fa-square-o'"></span>
+                        Sueurs
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.chest_retraction else 'fa fa-square-o'"></span>
+                        Tirage
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.ventilation=='noisy' else 'fa fa-square-o'"></span>
+                        Bruits
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.ventilation=='irregular' else 'fa fa-square-o'"></span>
+                        Irrégulière
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.difficulty_speaking else 'fa fa-square-o'"></span>
+                        Difficile / Difficulté à parler
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.thoracic_trauma else 'fa fa-square-o'"></span>
+                        Trauma thorax
+                    </span>
+                    <br/>
+                    <span>Autre : </span>
+                    <span t-esc="o.dr_others or '.....'"/>
+                </td>
+            </tr>
+
+            <!-- C -->
+            <tr>
+                <td class="band C">C</td>
+
+                <!-- col 2 : rouge -->
+                <td class="col-red">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.circ_acr else 'fa fa-square-o'"></span>
+                        Arrêt cardiaque
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.circ_pouls_radial_abs else 'fa fa-square-o'"></span>
+                        Pouls radial non perçu
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.circ_hemo_non_ctrl else 'fa fa-square-o'"></span>
+                        Hémorragie non contrôlée
+                    </span>
+                </td>
+
+                <!-- col 3 : bleue -->
+                <td class="col-blue">
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.pulse_quality=='thready' else 'fa fa-square-o'"></span>
+                        Pouls filant
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.pulse_regular=='irregular' else 'fa fa-square-o'"></span>
+                        Pouls irrégulier
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.pale_conjunctiva else 'fa fa-square-o'"></span>
+                        Pâleur
+                    </span>&amp;nbsp;
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.mottling else 'fa fa-square-o'"></span>
+                        Marbrures
+                    </span>
+                    <br/>
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.dc_controlled_bleeding else 'fa fa-square-o'"></span>
+                        Hémorragie contrôlée
+                    </span>
+                    <br/>
+                    <span>Autre : </span>
+                    <span t-esc="o.dc_others or '.....'"/>
+                </td>
+            </tr>
+
+            <!-- D -->
+            <tr>
+                <td class="band D">D</td>
+
+                <!-- col 2 : rouge (conscience + douleur) -->
+                <td class="">
+                    <span class="box col-red">
+                        Consciente
+                    </span>
+                    &amp;nbsp; Oui
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if not o.dn_unconscious else 'fa fa-square-o'"></span>
+                    </span>
+
+                    <span class="box col-red">
+                        &amp;nbsp; Non
+                        <span t-att-class="'fa fa-check-square-o' if o.dn_unconscious else 'fa fa-square-o'"></span>
+                    </span>
+                    <br/>
+                    <span class="box col-red">
+                        Réaction à la douleur
+                    </span>
+                    &amp;nbsp; Oui
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.dn_pain_reaction else 'fa fa-square-o'"></span>
+                    </span>
+
+                    <span class="box col-red">
+                        &amp;nbsp; Non
+                        <span t-att-class="'fa fa-check-square-o' if o.dn_no_pain_reaction else 'fa fa-square-o'"></span>
+                    </span>
+                </td>
+
+                <!-- col 3 : blanche (orientation / PCI) -->
+                <td>
+                    Orientée
+                    <span class="box">
+                        <span t-att-class="'fa fa-square-o'"></span>
+                    </span>
+                    &amp;nbsp; Obnubilée
+                    <span class="box">
+                        <span t-att-class="'fa fa-square-o'"></span>
+                    </span>
+                    <br/>
+                    PCI : Oui <span class="box"><span t-att-class="'fa fa-square-o'"></span></span> Non
+                    <span class="box"><span t-att-class="'fa fa-square-o'"></span></span>
+                    <br/>
+                    Pupilles symétriques
+                    Oui
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if o.pupils_symmetric else 'fa fa-square-o'"></span>
+                    </span>
+                    &amp;nbsp; Non
+                    <span class="box">
+                        <span t-att-class="'fa fa-check-square-o' if (not o.pupils_symmetric) else 'fa fa-square-o'"></span>
+                    </span>
+                </td>
+            </tr>
+
+            <!-- E -->
+            <tr>
+                <td class="band E">E</td>
+                <td colspan="2">&amp;nbsp;</td>
+            </tr>
+
+            <!-- Victime critique -->
+            <tr>
+                <td colspan="3" class="center" style="font-weight:700;">
+                    Victime critique
+                    <span class="box col-red">
+                        Oui
+                        <span t-att-class="'fa fa-check-square-o' if o.is_critical_victim else 'fa fa-square-o'"></span>
+                    </span>
+                    &amp;nbsp;&amp;nbsp;
+                    <span class="box">
+                        Non
+                        <span t-att-class="'fa fa-check-square-o' if (not o.is_critical_victim) else 'fa fa-square-o'"></span>
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <!-- ===== /BILAN PRIMAIRE ===== -->
+
+    </tbody>
+</table>
+
+
+                            </div>
+                            <div class="col-6 px-2">
+                                <!-- ===== BILAN SECONDAIRE ===== -->
+                                <!-- ====== BILAN SECONDAIRE – 8 LIGNES EXACTES ====== -->
+
+                                <div class="bs2">
+    <table>
+        <!-- L1 : Titre -->
+        <tr>
+            <th class="band y" colspan="6">
+                BILAN SECONDAIRE | Transmis à : <t t-if="samu_time" t-esc="samu_time" t-options='{"widget":"float_time"}'/>
+            </th>
+        </tr>
+
+        <!-- L2 : A -->
+        <tr>
+            <td class="band a" colspan="6">A</td>
+        </tr>
+
+        <!-- L3 : B (bande) -->
+        <tr>
+            <td class="band b" colspan="6">B</td>
+        </tr>
+
+        <!-- L4 : B – contenu (3 colonnes) -->
+        <tr class="tiny">
+            <!-- Col 1 : FR / SpO2 + blocs rouge/bleu -->
+            <td colspan="2">
+                <table style="width:100%;table-layout:fixed; border:0 !important;" class="table-borderless">
+                    <tr style="border:0 !important;">
+                        <!-- Texte FR / SpO2 -->
+                        <td style="border:0 !important;padding:4px;">
+                            <div>
+                                <strong>FR</strong> : <span t-esc="o.respiratory_rate or '.....'"/> / mn
+                            </div>
+                            <div class="my-1">
+                                <strong>SpO₂</strong> :
+                            </div>
+                            <div>
+                                <span t-esc="o.spo2_room_air"/> % en air ambiant
+                            </div>
+                            <div>
+                                <span t-esc="o.spo2_on_oxygen or '……'"/> % sous O₂
+                            </div>
+                        </td>
+                        <!-- Blocs rouge + bleu -->
+                        <td style="border:0 !important;padding:0;">
+                            <div class="crit-red">
+                                <span class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if (o.respiratory_rate and o.respiratory_rate &lt; 10) else 'fa fa-square-o'"></span>
+                                    <t t-esc="'FR &lt; 10 / mn'"/>
+                                </span>
+                                <br/>
+                                <span class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if (o.respiratory_rate and o.respiratory_rate &gt; 30) else 'fa fa-square-o'"></span>
+                                    <t t-esc="'FR &gt; 30 / mn'"/>
+                                </span>
+                            </div>
+                            <br/>
+                            <div class="crit-blue">
+                                <span class="box">
+                                    <span t-att-class="'fa fa-check-square-o' if (o.spo2_on_oxygen and o.spo2_on_oxygen &lt; 94) else 'fa fa-square-o'"></span>
+                                    <t t-esc="'SpO₂ &lt; 94 %'"/>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Col 2 : signes respiratoires -->
+            <td colspan="3" style="padding:0;">
+                <table style="width:100%;table-layout:fixed;" class="table-borderless">
+                    <tr style="border:0;">
+                        <td style="border:0;padding:4px;">
+                            <div class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.ventilation=='normal' else 'fa fa-square-o'"></span>
+                                Respiration normale (ventilation ample et silencieuse)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border:0;">
+                        <td class="blue" style="border:0;padding:4px;">
+                            <div class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.difficulty_speaking else 'fa fa-square-o'"></span>
+                                Difficulté à parler / compter jusqu’à 10
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.sweating else 'fa fa-square-o'"></span>
+                                        Sueurs
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.cyanosis else 'fa fa-square-o'"></span>
+                                        Cyanose
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.chest_retraction else 'fa fa-square-o'"></span>
+                                        Tirage
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.ventilation=='shallow' else 'fa fa-square-o'"></span>
+                                        Ventilation superficielle
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.ventilation=='irregular' else 'fa fa-square-o'"></span>
+                                        Ventilation irrégulière
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.ventilation=='noisy' else 'fa fa-square-o'"></span>
+                                        Ventilation bruyante
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Col 3 : autres signes -->
+            <td>
+                <strong>Autres signes :</strong>
+                <br/>
+                <span t-esc="o.secondary_assessment_b_notes or '.....'"/>
+            </td>
+        </tr>
+
+        <!-- L5 : C -->
+        <tr>
+            <td class="band c" colspan="6">C</td>
+        </tr>
+
+        <!-- L6 : C – contenu (4 colonnes) -->
+        <tr class="tiny">
+            <!-- FC -->
+            <td>
+                <div>
+                    <strong>FC</strong> : <span t-esc="o.heart_rate_bpm or '.....'"/> / mn
+                </div>
+                <br/>
+                <div class="blue" style="margin-top:4px;padding:4px;">
+                    <div class="box">
+                        <span t-att-class="'fa fa-check-square-o' if (o.heart_rate_bpm and o.heart_rate_bpm &gt; 120) else 'fa fa-square-o'"></span>
+                        <t t-esc="'FC &gt; 120 / mn'"/>
+                    </div>
+                    <div class="box">
+                        <span t-att-class="'fa fa-check-square-o' if (o.heart_rate_bpm and o.heart_rate_bpm &lt; 40) else 'fa fa-square-o'"></span>
+                        <t t-esc="'FC &lt; 40 / mn'"/>
+                    </div>
+                </div>
+            </td>
+
+            <!-- PA -->
+            <td>
+                <div class="smalltxt">
+                    <strong>PA</strong> : <span t-esc="o.bp_left_systolic or '……'"/>/<span t-esc="o.bp_left_diastolic or '……'"/> <span style="font-size:13px;">Bras Gauche</span>
+                </div>
+                <div class="smalltxt">
+                    <strong>PA</strong> : <span t-esc="o.bp_right_systolic or '……'"/>/<span t-esc="o.bp_right_diastolic or '……'"/> <span style="font-size:13px;">Bras Droit</span>
+                </div>
+                <div class="blue" style="margin-top:4px;padding:4px;">
+                    <div class="box">
+                        <span t-att-class="'fa fa-check-square-o' if (o.bp_right_systolic &gt; 170 or o.bp_left_systolic &gt; 170) else 'fa fa-square-o'"></span>
+                        <t t-esc="'PAS &gt; 170 mmHg'"/>
+                    </div>
+                    <div class="box">
+                        <span t-att-class="'fa fa-check-square-o' if (o.bp_right_systolic &lt; 100 or o.bp_left_systolic &lt; 100) else 'fa fa-square-o'"></span>
+                        <t t-esc="'PAS &lt; 100 mmHg'"/>
+                    </div>
+                </div>
+            </td>
+
+            <!-- Pouls / TRC / signes cutanés -->
+            <td colspan="3" style="padding:0;">
+                <table style="width:100%;table-layout:fixed;" class="table-borderless">
+                    <tr style="border:0;">
+                        <td style="border:0;padding:4px;">
+                            <div class="box">
+                                <span t-att-class="'fa fa-check-square-o' if o.pulse_quality=='strong' else 'fa fa-square-o'"></span>
+                                Bien frappé et régulier
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="border:0;">
+                        <td class="blue" style="padding:4px;border:0;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.pulse_quality=='thready' else 'fa fa-square-o'"></span>
+                                        Pouls filant
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.pulse_regular=='irregular' else 'fa fa-square-o'"></span>
+                                        Pouls irrégulier
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.capillary_refill_over_3s else 'fa fa-square-o'"></span>
+                                        <t t-esc="'TRC &gt; 3 sec.'"/>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.pale_conjunctiva else 'fa fa-square-o'"></span>
+                                        Conjonctives pâles
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.mottling else 'fa fa-square-o'"></span>
+                                        Marbrures
+                                    </div>
+                                    <div class="box">
+                                        <span t-att-class="'fa fa-check-square-o' if o.dc_controlled_bleeding else 'fa fa-square-o'"></span>
+                                        Hémorragie contrôlée
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Autres signes C -->
+            <td>
+                <strong>Autres signes :</strong>
+                <br/>
+                <span t-esc="o.secondary_assessment_c_notes or '.....'"/>
+            </td>
+        </tr>
+
+        <!-- L7 : D -->
+        <tr>
+            <td class="band d" colspan="6">D</td>
+        </tr>
+
+        <!-- L8 : D – contenu (4 colonnes) -->
+        <tr class="tiny">
+            <!-- Glasgow -->
+            <td class="text-center">
+                <div style="font-weight: bold; margin-bottom: 5px;">Score de Glasgow</div>
+                <div class="glasgow-container">
+                    <div><span class="glasgow-label">Y :</span> <span t-esc="o.glasgow_eye or '-'"/> / 4</div>
+                    <div><span class="glasgow-label">V :</span> <span t-esc="o.glasgow_verbal or '-'"/> / 5</div>
+                    <div><span class="glasgow-label">M :</span> <span t-esc="o.glasgow_motor or '-'"/> / 6</div>
+                    <div class="glasgow-total"><span class="glasgow-label">=></span> <span t-esc="o.glasgow_total or '-'"/> / 15</div>
+                </div>
+            </td>
+
+            <!-- Pupilles -->
+            <td>
+                <div class="row">
+                    <div class="col-6 smalltxt"><b>Pupilles</b></div>
+                    <div class="col-3 text-end"><b>G</b></div>
+                    <div class="col-3 text-end"><b>D</b></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 smalltxt">Réactive</div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_left_reactive else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_right_reactive else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 smalltxt">Non réactive</div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_left_non_reactive else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_right_non_reactive else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 smalltxt">Myosis</div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_left_myosis else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_right_myosis else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 smalltxt">Mydriase</div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_left_mydriasis else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-3 text-end">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupil_right_mydriasis else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 smalltxt">Symétrique</div>
+                    <div class="col-3 text-end" style="font-size: 12px;">
+                        Oui
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pupils_symmetric else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-3 text-end" style="font-size: 12px;">
+                        Non
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if not o.pupils_symmetric else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                </div>
+            </td>
+
+            <!-- Déficits moteurs / sensitifs -->
+            <td colspan="3" class="blue">
+                <div class="row">
+                    <div class="col-4 text-end">
+                        <strong>Déficit des membres</strong><br/>
+                        <strong>Supérieur</strong><br/>
+                        <strong>Inférieur</strong><br/><br/>
+                        Paralysie faciale
+                    </div>
+                    <div class="col-2 text-center">
+                        <strong>Motricité</strong><br/>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.motor_deficit_upper_left else 'fa fa-square-o'"></span>
+                        </span>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.motor_deficit_upper_right else 'fa fa-square-o'"></span>
+                        </span>
+                        <br/>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.motor_deficit_lower_left else 'fa fa-square-o'"></span>
+                        </span>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.motor_deficit_lower_right else 'fa fa-square-o'"></span>
+                        </span>
+                        <br/>
+                        G&amp;nbsp;&amp;nbsp;D
+                        <br/>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.facial_paralysis_left else 'fa fa-square-o'"></span>
+                        </span>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.facial_paralysis_right else 'fa fa-square-o'"></span>
+                        </span>
+                    </div>
+                    <div class="col-2 text-center">
+                        <strong>Sensibilité</strong><br/>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.sensory_deficit_upper_left else 'fa fa-square-o'"></span>
+                        </span>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.sensory_deficit_upper_right else 'fa fa-square-o'"></span>
+                        </span>
+                        <br/>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.sensory_deficit_lower_left else 'fa fa-square-o'"></span>
+                        </span>
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.sensory_deficit_lower_right else 'fa fa-square-o'"></span>
+                        </span>
+                        <br/>
+                        G&amp;nbsp;&amp;nbsp;D
+                    </div>
+                    <div class="col-4">
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.speech_disorder else 'fa fa-square-o'"></span>
+                        </span>
+                        <strong>Troubles de la parole</strong><br/>
+
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.agitation else 'fa fa-square-o'"></span>
+                        </span>
+                        <strong>Agitation</strong><br/>
+
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.pci_duration else 'fa fa-square-o'"></span>
+                        </span>
+                        <strong>PCI / durée</strong> <span t-esc="o.pci_duration or '.....'"/><br/>
+
+                        <span class="box">
+                            <span t-att-class="'fa fa-check-square-o' if o.convulsions else 'fa fa-square-o'"></span>
+                        </span>
+                        <strong>Convulsions</strong><br/>
+                    </div>
+                </div>
+                <div style="margin-top:2px;">
+                    Heure d’apparition des signes :
+                    <t t-if="o.symptom_onset_time">
+                        <span t-field="o.symptom_onset_time" t-options='{"widget": "float_time"}'/>
+                    </t>
+                </div>
+            </td>
+
+            <!-- Autres signes D -->
+            <td>
+                <strong>Autres signes :</strong><br/>
+                <span t-esc="o.secondary_assessment_d_notes or '.....'"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+                                <!-- ====== /BILAN SECONDAIRE – 8 LIGNES ====== -->
+
+                                <!-- ===== /BILAN SECONDAIRE ===== -->
+
+                                <!-- ====== E — BILAN LÉSIONNEL / ÉLÉMENTS DIVERS / GESTES ====== -->
+
+                                <table class="e2">
+                                    <tr>
+                                        <td style="width:50%;padding:0;border-right:0;">
+                                            <div class="row"
+                                                 style="background:#F4D03F; text-align:center; font-weight:700;">
+                                                <div class="col-2">E</div>
+                                                <div class="col-10 text-center">BILAN LESIONNEL</div>
+                                            </div>
+                                            <div class="row">
+                                                <img t-if="o.image_painted" t-att-src="image_data_uri(o.image_painted)" style="height:350px;"/>
+                                            </div>
+                                            <div class="section-box-e" style="min-height:50px;">
+                                            <div class="section-title-e">Observations bilan lésionnel</div>
+                                            <div class="section-content-e">
+                                                <span t-esc="o.lesions_notes or '.....'"/>
+                                            </div>
+                    </div>
+
+                    <div class="section-box-e" style="min-height:70px;">
+                        <div class="section-title-e">Antécédents – Traitements (MHTA)</div>
+                        <div class="section-content-e">
+                            <t t-if="not o.diseases_none and o.diseases_notes">
+                                <span class="smalltxt"><strong>Maladies:</strong> <span t-esc="o.diseases_notes"/></span>
+                            </t>
+                            <t t-else="">
+                                <br/>
+                            </t>
+                            <t t-if="not o.hospitalizations_none and o.hospitalizations_notes">
+                                <span class="smalltxt"><strong>Hospitalisations:</strong> <span t-esc="o.hospitalizations_notes"/></span>
+                            </t>
+                            <t t-else="">
+                                <br/>
+                            </t>
+                            <t t-if="not o.treatment_none and o.treatment_notes">
+                                <span class="smalltxt"><strong>Traitement:</strong> <span t-esc="o.treatment_notes"/></span>
+                            </t>
+                            <t t-else="">
+                                <br/>
+                            </t>
+                        </div>
+                    </div>
+                                            <div class="row tbl">
+                                                <table>
+                                                <!-- Titre SURVEILLANCE -->
+                                                <tr>
+                                                    <th colspan="9" class="headY">SURVEILLANCE</th>
+                                                </tr>
+                                                <!-- En-tête colonnes -->
+                                                <tr class="tiny" style="text-align:center;font-weight:700;">
+                                                    <td>Heure</td>
+                                                    <td>FR</td>
+                                                    <td>SpO₂</td>
+                                                    <td>FC</td>
+                                                    <td>PA</td>
+                                                    <td>GSC</td>
+                                                    <td>Doul.</td>
+                                                    <td>T°C</td>
+                                                    <td>Gly.</td>
+                                                </tr>
+
+                                                <!-- Lignes remplies -->
+                                                <t t-if="o.surveillance_line_ids">
+                                                    <tr t-foreach="o.surveillance_line_ids" t-as="l" class="tiny">
+                                                        <td t-esc="l.time_hhmm" t-options='{"widget":"float_time"}'/>
+                                                        <td t-esc="l.rr_per_min or '.....'"/>
+                                                        <td t-esc="l.spo2_pct or '.....'"/>
+                                                        <td t-esc="l.hr_per_min or '.....'"/>
+                                                        <td t-esc="l.bp or '.....'"/>
+                                                        <td t-esc="l.gcs_total or '.....'"/>
+                                                        <td t-esc="l.pain_adult or '.....'"/>
+                                                        <td t-esc="l.temperature_c or '.....'"/>
+                                                        <td t-esc="l.glycemia_mg_dl or '.....'"/>
+                                                    </tr>
+                                                </t>
+
+                                                <!-- Lignes vides pour compléter à la main -->
+                                                <t t-set="max_lines" t-value="(6-len(o.surveillance_line_ids)) or 6"/>
+                                                <t t-foreach="range(0,max_lines)" t-as="i">
+                                                    <tr class="tiny">
+                                                        <td>&amp;nbsp;</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </t>
+
+                                                <!-- Nom intervenant / Observations -->
+                                                <tr class="tiny greyRow" style="font-weight:700;">
+                                                    <td colspan="4">Nom de l’intervenant et signature</td>
+                                                    <td colspan="5">Autres observations (objets remis,…)</td>
+                                                </tr>
+                                                <!-- Signature intervenant + zone texte -->
+                                                <tr>
+                                                    <td colspan="4" class="sigCell">
+                                                        <div class="smalltxt" t-esc="o.responder_name or '.....'"/>
+                                                        <div style="text-align:center;">
+                                                            <img t-if="o.responder_signature"
+                                                                 t-att-src="'data:image/png;base64,%s&amp;height=100&amp;quiet=0' % (o.responder_signature.decode() if isinstance(o.responder_signature, bytes) else o.responder_signature)"
+                                                                 style="max-height:60px;"/>
+                                                        </div>
+                                                    </td>
+                                                    <td colspan="5" rowspan="5">
+                                                        <span class="smalltxt" t-esc="o.transport_notes or '.....'"/>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Signature victime -->
+                                                <tr class="tiny greyRow">
+                                                    <td colspan="4">Signature victime
+                                                        <sup>3</sup>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4" class="sigCell text-align:center;">
+                                                        <div style="text-align:center;">
+                                                            <img t-if="o.victim_signature"
+                                                                 t-att-src="'data:image/png;base64,%s&amp;height=100&amp;quiet=0' % (o.victim_signature.decode() if isinstance(o.victim_signature, bytes) else o.victim_signature)"
+                                                                 style="max-height:60px;"/>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td colspan="4">Signature responsable victime
+                                                        <sup>3</sup>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4" class="sigCell">
+                                                        <div style="text-align:center;">
+                                                            <img t-if="o.victim_responsible_signature"
+                                                                 t-att-src="'data:image/png;base64,%s&amp;height=100&amp;quiet=0' % (o.victim_responsible_signature.decode() if isinstance(o.victim_responsible_signature, bytes) else o.victim_responsible_signature)"
+                                                                 style="max-height:60px;"/>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            </div>
+                                        </td>
+                                        <td style="width:50%;padding:0;border-left:0;">
+                                            <table class="e2" style="border-right:0;border-top:0;">
+                                                <!-- Éléments divers -->
+                                                <tr>
+                                                    <th colspan="22" class="head">ÉLÉMENTS DIVERS</th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="11">
+                                                        <strong>Température</strong>
+                                                        :
+                                                        <span t-esc="o.temperature_c or '.....'"/>
+                                                        °C &amp;nbsp;&amp;nbsp;
+                                                    </td>
+                                                    <td colspan="11">
+                                                        <strong>Glycémie</strong>
+                                                        :
+                                                        <span t-esc="o.glycemia_mg_dl or '.....'"/>
+                                                        mg/dl
+                                                    </td>
+                                                </tr>
+                                                <!-- Échelle douleur adulte (0–10) -->
+                                                <tr>
+                                                    <td colspan="22" class="head">Échelle de la douleur adulte</td>
+                                                </tr>
+                                                <tr>
+                                                    <t t-foreach="range(0,11)" t-as="i">
+                                                        <td colspan="2"  class="diagonal-line cell" t-att-style="'background:#0000FF' if o.pain_scale_adult == str(i) else ''">
+                                                            <span t-esc="i"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                                <!-- Échelle douleur enfant -->
+                                                <tr>
+                                                    <td colspan="22" class="head">Échelle de la douleur enfant</td>
+                                                </tr>
+                                                <tr class="tiny">
+                                                    <td colspan="4">
+                                                        <span class="box smalltxt">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.child_pain_crying else 'fa fa-square-o'"></span>
+                                                            Pleurs
+                                                        </span>
+                                                    </td>
+                                                    <td colspan="4">
+                                                        <span class="box smalltxt">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.child_pain_grimace else 'fa fa-square-o'"></span>
+                                                            Grimace
+                                                        </span>
+                                                    </td>
+                                                    <td colspan="5" class="blueband">
+                                                        <span class="box smalltxt">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.child_pain_analgesic_position else 'fa fa-square-o'"></span>
+                                                            Position antalgique
+                                                        </span>
+                                                    </td>
+                                                    <td colspan="4" class="blueband">
+                                                        <span class="box smalltxt">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.child_pain_refuses_touch else 'fa fa-square-o'"></span>
+                                                            Refuse d’être touché
+                                                        </span>
+                                                    </td>
+                                                    <td colspan="5" class="blueband">
+                                                        <span class="box smalltxt">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.child_pain_prostration else 'fa fa-square-o'"></span>
+                                                            Prostration
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Gestes -->
+                                                <tr>
+                                                    <th colspan="22" class="head">GESTES ET TECHNIQUES EFFECTUÉS</th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="22">
+                                                        <div class="row">
+                                                            <strong>Gestes de Sauvegarde</strong>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.rcp else 'fa fa-square-o'"></span>
+                                                                    RCP
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.aspiration else 'fa fa-square-o'"></span>
+                                                                    Aspiration
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.helmet_removal else 'fa fa-square-o'"></span>
+                                                                    Retrait du casque
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.tourniquet_applied else 'fa fa-square-o'"></span>
+                                                                    Garrot :
+                                                                    <t t-if="o.tourniquet_time">
+                                                                        <span t-esc="o.tourniquet_time" t-options='{"widget":"float_time"}'/>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.va else 'fa fa-square-o'"></span>
+                                                                    VA
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.disobstruction else 'fa fa-square-o'"></span>
+                                                                    Désobstruction
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.dae else 'fa fa-square-o'"></span>
+                                                                    DAE
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="22">
+                                                        <div class="row">
+                                                            <strong>Position d’attente</strong>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.position_pls else 'fa fa-square-o'"></span>
+                                                                    PLS
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.position_lying else 'fa fa-square-o'"></span>
+                                                                    Allongé
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.position_sitting else 'fa fa-square-o'"></span>
+                                                                    Assis
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.position_knees_flexed else 'fa fa-square-o'"></span>
+                                                                    Genoux fléchis
+                                                                </div>
+                                                            </div>
+                                                            <div colspan="col-3">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.position_half_sitting else 'fa fa-square-o'"></span>
+                                                                    1/2 assise
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="22">
+                                                        <div class="row">
+                                                            <strong>Conditionnement</strong>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-5">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.collar_cervical else 'fa fa-square-o'"></span>
+                                                                    Collier cervical
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.hard_board else 'fa fa-square-o'"></span>
+                                                                    Plan dur
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.splint else 'fa fa-square-o'"></span>
+                                                                    Attelle
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.bandage else 'fa fa-square-o'"></span>
+                                                                    Pansement
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.thermal_protection else 'fa fa-square-o'"></span>
+                                                                    Protection thermique
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.thoracic_cervico_brace else 'fa fa-square-o'"></span>
+                                                                    Attelle cervico-thoracique
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.vacuum_mattress else 'fa fa-square-o'"></span>
+                                                                    Matelas immobilisateur à dépression
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.sling else 'fa fa-square-o'"></span>
+                                                                    Écharpe
+                                                                </div>
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.burn_cooling else 'fa fa-square-o'"></span>
+                                                                    Refroidissement brûlure
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-2">
+                                                                <div class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.lifting else 'fa fa-square-o'"></span>
+                                                                    Relevage
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-10">
+                                                                <div class="box smalltxt">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.other_care else 'fa fa-square-o'"/>
+                                                                       Autres soins : <span t-esc="o.other_care_details or '.....'"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="22" class="tiny">
+
+                                                        <!-- Ligne 1 -->
+                                                        <strong>Administration</strong>
+                                                        <div class="smalltxt" style="white-space:nowrap;">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.oxygen_administered else 'fa fa-square-o'"/>
+                                                            O₂ Débit :
+                                                            <span t-esc="o.oxygen_flow_lpm or '.....'"/>
+                                                            L/min
+                                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                                            <span t-att-class="'fa fa-check-square-o' if o.ambu_bag else 'fa fa-square-o'"/>
+                                                            BAVU
+
+                                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                                            <span t-att-class="'fa fa-check-square-o' if o.inhalation_mask else 'fa fa-square-o'"/>
+                                                            Masque inhalation
+                                                        </div>
+
+                                                        <!-- Ligne 2 -->
+                                                        <div class="smalltxt" style="white-space:nowrap;">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.medication_given else 'fa fa-square-o'"></span>
+                                                            Aide à la prise d’un médicament –
+                                                            Nom :
+                                                            <span t-esc="o.medication_name or '.....'"/>
+                                                            &#160;&#160;Dose :
+                                                            <span t-esc="o.medication_dose or '.....'"/>
+                                                        </div>
+
+                                                        <!-- Ligne 3 -->
+                                                        <span class="box smalltxt" style="display:inline-block; margin-top:2px; margin-right:18px;">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.sugar_administered else 'fa fa-square-o'"></span>
+                                                            Sucre
+                                                        </span>
+
+                                                        <span class="box smalltxt" style="display:inline-block; margin-right:18px;">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.other_admin else 'fa fa-square-o'"></span>
+                                                            <span>Autre : </span>
+                                                        </span>
+                                                        <span style="display:inline-block; min-width:120px;" class="smalltxt">
+                                                            <span t-esc="o.other_admin_details or '.....'"/>
+                                                        </span>
+                                                        <div style="display:inline-block;margin-top:2px;" class="smalltxt">
+                                                            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                            <span>Heure : </span>
+                                                            <span style="display:inline-block; min-width:50px;">
+                                                                <t t-if="o.admin_time">
+                                                                    <span t-field="o.admin_time" t-options='{"widget":"time"}'/>
+                                                                </t>
+                                                                <t t-else="">....h....</t>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            <table class="tbl">
+                                                <tr>
+                                                    <th class="headB">CONTACT MEDICAL</th>
+                                                </tr>
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                Appel SAMU :
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.samu_called else 'fa fa-square-o'"></span>
+                                                                    Oui
+                                                                </span>
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if not o.samu_called else 'fa fa-square-o'"></span>
+                                                                    Non
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <t t-if="o.samu_called">
+                                                                    <span class="muted">si oui </span>
+                                                                    <span t-esc="o.samu_call_time or '.....'" t-options='{"widget":"float_time"}'/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                SAMU sur les lieux :
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.samu_on_site else 'fa fa-square-o'"></span>
+                                                                    Oui
+                                                                </span>
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if not o.samu_on_site else 'fa fa-square-o'"></span>
+                                                                    Non
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <t t-if="o.samu_on_site">
+                                                                <span class="muted">si oui </span>
+                                                                <span t-esc="o.samu_on_site_time or '.....'" t-options='{"widget":"float_time"}'/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                Médecin site sur les lieux :
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.site_doctor_on_site else 'fa fa-square-o'"></span>
+                                                                    Oui
+                                                                </span>
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if not o.site_doctor_on_site else 'fa fa-square-o'"></span>
+                                                                    Non
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <t t-if="o.site_doctor_on_site">
+                                                                <span class="muted">si oui </span>
+                                                                <span t-esc="o.site_doctor_time or '.....'" t-options='{"widget":"float_time"}'/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                Infirmière site sur les lieux :
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.site_nurse_on_site else 'fa fa-square-o'"></span>
+                                                                    Oui
+                                                                </span>
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if not o.site_nurse_on_site else 'fa fa-square-o'"></span>
+                                                                    Non
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <t t-if="o.site_nurse_on_site">
+                                                                    <span class="muted">si oui </span>
+                                                                <span t-esc="o.site_nurse_time or '.....'" t-options='{"widget":"float_time"}'/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                Pompiers ville sur les lieux :
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if o.firefighters_on_site else 'fa fa-square-o'"></span>
+                                                                    Oui
+                                                                </span>
+                                                                <span class="box">
+                                                                    <span t-att-class="'fa fa-check-square-o' if not o.firefighters_on_site else 'fa fa-square-o'"></span>
+                                                                    Non
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <t t-if="o.firefighters_on_site">
+                                                                <span class="muted">si oui </span>
+                                                                <span t-esc="o.firefighters_time or '.....'" t-options='{"widget":"float_time"}'/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- TRANSPORT -->
+                                                <tr>
+                                                    <th class="headB">TRANSPORT</th>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <span class="box">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.left_on_site_returned_to_work else 'fa fa-square-o'"></span>
+                                                        </span>
+                                                        Laissé sur place, a repris le travail à
+                                                        <t t-if="o.left_on_site_time">
+                                                            <t t-out="o.left_on_site_time" t-options='{"widget":"float_time"}'/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            H……
+                                                        </t>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <span class="box">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.transported_by_pi_to_main_infirmary else 'fa fa-square-o'"></span>
+                                                        </span>
+                                                        Transporté par PI à l’infirmerie principale à
+                                                        <t t-if="o.transported_pi_time">
+                                                            <t t-out="o.transported_pi_time" t-options='{"widget":"float_time"}'/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            H……
+                                                        </t>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <span class="box">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.transported_by_private_ambulance_or_taxi else 'fa fa-square-o'"></span>
+                                                        </span>
+                                                        Transporté par ambulance privée ou taxi à
+                                                        <t t-if="o.transported_private_time">
+                                                            <t t-out="o.transported_private_time" t-options='{"widget":"float_time"}'/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            ……
+                                                        </t>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <span class="box">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.transported_by_firefighters_cis else 'fa fa-square-o'"></span>
+                                                        </span>
+                                                        Transporté par Pompiers CIS
+                                                        <t t-if="o.transported_cis_time">
+                                                            <t t-out="o.transported_cis_time" t-options='{"widget":"float_time"}'/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            ……
+                                                        </t>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="tiny greyRow">
+                                                    <td>
+                                                        <span class="box">
+                                                            <span t-att-class="'fa fa-check-square-o' if o.refused_care_or_transport else 'fa fa-square-o'"></span>
+                                                        </span>
+                                                        Refus de prise en charge ou de transport à
+                                                        <t t-if="o.refusal_time">
+                                                            <t t-out="o.refusal_time" t-options='{"widget":"float_time"}'/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            H……
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <t t-set="all_images" t-value="list(o.photo_ids) + list(o.prescription_photo_ids)"/>
+                    <t t-set="total_images" t-value="len(all_images)"/>
+                    <t t-set="total_photo_pages" t-value="(total_images + 3) // 4"/>
+
+                    <t t-foreach="range(0, total_images, 4)" t-as="page_start">
+                        <t t-set="current_page_num" t-value="(page_start // 4) + 1"/>
+
+                        <div class="page" style="page-break-before: always;">
+                            <h2 class="text-center" style="background:#F39B2E; color:white; padding:12px; margin-bottom:20px;">
+                                PHOTOS ET PIÈCES JOINTES (Page <t t-esc="current_page_num"/> / <t t-esc="total_photo_pages"/>)
+                            </h2>
+
+                            <table style="width: 100%; table-layout: fixed; border-collapse: collapse; border:0 !important;" class="table-borderless">
+                                <tr style="height: 610px;border:0 !important;">
+                                    <td style="width: 50%; border:0 !important; text-align: center; vertical-align: middle; padding: 10px;">
+                                        <t t-if="total_images > page_start">
+                                            <t t-set="img1" t-value="all_images[page_start]"/>
+                                            <div style="height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <img t-if="img1.datas" t-att-src="image_data_uri(img1.datas)" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                    <td style="width: 50%; border:0 !important; text-align: center; vertical-align: middle; padding: 10px;">
+                                        <t t-if="total_images > page_start + 1">
+                                            <t t-set="img2" t-value="all_images[page_start + 1]"/>
+                                            <div style="height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <img t-if="img2.datas" t-att-src="image_data_uri(img2.datas)" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr style="height: 610px; border:0 !important;">
+                                    <td style="width: 50%; text-align: center; vertical-align: middle; padding: 10px; border:0 !important;">
+                                        <t t-if="total_images > page_start + 2">
+                                            <t t-set="img3" t-value="all_images[page_start + 2]"/>
+                                            <div style="height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <img t-if="img3.datas" t-att-src="image_data_uri(img3.datas)" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                    <td style="width: 50%; text-align: center; vertical-align: middle; padding: 10px; border:0 !important;">
+                                        <t t-if="total_images > page_start + 3">
+                                            <t t-set="img4" t-value="all_images[page_start + 3]"/>
+                                            <div style="height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <img t-if="img4.datas" t-att-src="image_data_uri(img4.datas)" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

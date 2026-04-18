@@ -1,0 +1,91 @@
+<odoo>
+    <record id="view_saas_instance_list" model="ir.ui.view">
+        <field name="name">saas.instance.list</field>
+        <field name="model">saas.instance</field>
+        <field name="arch" type="xml">
+            <list string="Instances">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="has_valid_license" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_saas_instance_form" model="ir.ui.view">
+        <field name="name">saas.instance.form</field>
+        <field name="model">saas.instance</field>
+        <field name="arch" type="xml">
+            <form string="Instance">
+            <header>
+                <button name="action_create_coolify_project"
+                        string="Créer Projet Coolify"
+                        type="object"
+                        class="btn-primary"
+                        invisible="coolify_uuid != False"/>
+
+                <button name="action_test_ssh"
+                        string="Test SSH Connection"
+                        type="object"
+                        class="btn-secondary"
+                        icon="fa-plug"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="ex: Instance Production"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="server_id"/>
+                            <field name="coolify_id"/>
+                            <field name="coolify_uuid" string="UUID Projet (Coolify)"/>
+                            <field name="has_valid_license" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Hosted Environments">
+                            <field name="environment_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'running'"
+                                           decoration-danger="state in ('stopped', 'exited')"/>
+                                    <field name="domain_url"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Licenses &amp; Subscriptions">
+                            <field name="license_ids">
+                                <list editable="bottom" decoration-success="state=='valid'" decoration-danger="state=='expired'">
+                                    <field name="type_id"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="token" optional="hide"/>
+                                    <field name="sale_order_id" widget="many2one_button" optional="show"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_saas_instance" model="ir.actions.act_window">
+        <field name="name">Instances</field>
+        <field name="res_model">saas.instance</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first instance.
+            </p>
+        </field>
+    </record>
+
+</odoo>

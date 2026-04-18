@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_saas_license_type_form" model="ir.ui.view">
+        <field name="name">saas.license.type.form</field>
+        <field name="model">saas.license.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="duration_months"/>
+                        </group>
+                    </group>
+                    <notebook>
+                    <page string="Usage Conditions (Audit)">
+                        <group string="User Limits">
+                            <field name="user_condition_ids">
+                                <list editable="bottom">
+                                    <field name="group_xml_id"/>
+                                    <field name="max_users"/>
+                                </list>
+                            </field>
+                        </group>
+                        <group string="Module Control">
+                            <field name="module_condition_ids">
+                                <list editable="bottom">
+                                    <field name="module_technical_name"/>
+                                    <field name="behavior"/>
+                                </list>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Configuration Déploiement (Docker)">
+                        <div class="alert alert-info" role="alert">
+                            <i class="fa fa-code"/> Variables disponibles :
+                            <code>DOMAIN_URL</code> (ex: odoo.client.com),
+                            <code>DB_PASSWORD</code> (Généré automatiquement)
+                        </div>
+                        <field name="docker_compose_template"
+                               widget="text"
+                               style="font-family: monospace; min-height: 400px; background: #f8f9fa;"/>
+                    </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_saas_license_type" model="ir.actions.act_window">
+        <field name="name">License Types</field>
+        <field name="res_model">saas.license.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

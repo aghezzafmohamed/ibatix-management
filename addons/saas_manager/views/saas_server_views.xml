@@ -1,0 +1,57 @@
+<odoo>
+    <record id="view_saas_server_form" model="ir.ui.view">
+        <field name="name">saas.server.form</field>
+        <field name="model">saas.server</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_ssh" string="Test SSH" type="object" class="btn-secondary" icon="fa-terminal"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="Worker 01"/></h1>
+                    </div>
+                    <group>
+                        <group string="Coolify Link">
+                            <field name="coolify_id"/>
+                            <field name="coolify_uuid"/>
+                        </group>
+                        <group string="SSH Access (Docker)">
+                            <field name="ssh_ip"/>
+                            <field name="ssh_port"/>
+                            <field name="ssh_user"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Security &amp; SSH Key">
+                            <div class="alert alert-warning" role="alert">
+                                <i class="fa fa-lock"/>
+                                Paste the <strong>Private Key</strong> below.
+                                Ensure it has no passphrase for automation to work.
+                            </div>
+                            <field name="ssh_key"
+                                   placeholder="-----BEGIN OPENSSH PRIVATE KEY-----&#10;..."
+                                   style="font-family: monospace; font-size: 11px; min-height: 300px;"/>
+                        </page>
+                        <page string="Hosted Projects">
+                            <field name="instance_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="environment_ids" widget="many2many_tags"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_saas_server" model="ir.actions.act_window">
+        <field name="name">Servers (Workers)</field>
+        <field name="res_model">saas.server</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_saas_coolify_form" model="ir.ui.view">
+        <field name="name">saas.coolify.form</field>
+        <field name="model">saas.coolify</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_ping" string="Test Connection" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="e.g. Production Master"/></h1>
+                    </div>
+                    <group>
+                        <field name="api_url"/>
+                        <field name="api_token" password="True"/>
+                    </group>
+                    <notebook>
+                        <page string="Servers">
+                            <field name="server_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="ssh_ip"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_saas_coolify" model="ir.actions.act_window">
+        <field name="name">Coolify Instances</field>
+        <field name="res_model">saas.coolify</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

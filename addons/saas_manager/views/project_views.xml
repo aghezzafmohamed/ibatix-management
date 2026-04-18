@@ -1,0 +1,15 @@
+<odoo>
+    <record id="project_project_view_form_inherit_saas" model="ir.ui.view">
+        <field name="name">project.project.view.form.inherit.saas</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="action_view_saas_instances"
+                        icon="fa-server" invisible="saas_instance_count == 0">
+                    <field string="Instances" name="saas_instance_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

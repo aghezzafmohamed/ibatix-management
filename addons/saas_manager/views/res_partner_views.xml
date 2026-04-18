@@ -1,0 +1,17 @@
+<odoo>
+    <record id="view_partner_form_saas" model="ir.ui.view">
+        <field name="name">res.partner.form.saas</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_view_instances" type="object"
+                        class="oe_stat_button" icon="fa-cubes"
+                        invisible="instance_count == 0">
+                    <field name="instance_count" widget="statinfo" string="Instances"/>
+                </button>
+            </div>
+
+        </field>
+    </record>
+</odoo>

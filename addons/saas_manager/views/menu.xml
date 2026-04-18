@@ -1,0 +1,72 @@
+<odoo>
+    <record id="action_saas_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard (Environments)</field>
+        <field name="res_model">saas.environment</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{'search_default_group_by_state': 1}</field> </record>
+
+    <record id="action_saas_license_all" model="ir.actions.act_window">
+        <field name="name">All Licenses</field>
+        <field name="res_model">saas.license</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_state_valid': 1}</field>
+    </record>
+
+    <menuitem id="menu_saas_root"
+              name="SaaS Manager"
+              web_icon="project,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem id="menu_saas_dashboard"
+              name="Dashboard"
+              parent="menu_saas_root"
+              action="action_saas_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_saas_instance"
+              name="Instances (Clients)"
+              parent="menu_saas_root"
+              action="action_saas_instance"
+              sequence="10"/>
+
+    <menuitem id="menu_saas_licenses_root"
+              name="Licenses"
+              parent="menu_saas_root"
+              action="action_saas_license_all"
+              sequence="20"/>
+
+
+    <menuitem id="menu_saas_infrastructure"
+              name="Infrastructure"
+              parent="menu_saas_root"
+              sequence="50"/>
+
+        <menuitem id="menu_saas_server"
+                  name="Workers (Servers)"
+                  parent="menu_saas_infrastructure"
+                  action="action_saas_server"
+                  sequence="10"/>
+
+        <menuitem id="menu_saas_coolify"
+                  name="Coolify Masters"
+                  parent="menu_saas_infrastructure"
+                  action="action_saas_coolify"
+                  sequence="20"/>
+
+
+    <menuitem id="menu_saas_config"
+              name="Configuration"
+              parent="menu_saas_root"
+              sequence="100"/>
+
+        <menuitem id="menu_saas_config_plans"
+                  name="Plans &amp; Pricing"
+                  parent="menu_saas_config"
+                  sequence="10"/>
+
+            <menuitem id="menu_saas_license_types"
+                      name="License Types"
+                      parent="menu_saas_config_plans"
+                      action="action_saas_license_type"/>
+
+            </odoo>

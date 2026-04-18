@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saas_coolify,saas.coolify,model_saas_coolify,base.group_user,1,1,1,1
+access_saas_server,saas.server,model_saas_server,base.group_user,1,1,1,1
+access_saas_instance,saas.instance,model_saas_instance,base.group_user,1,1,1,1
+access_saas_environment,saas.environment,model_saas_environment,base.group_user,1,1,1,1
+access_saas_variable,saas.variable,model_saas_variable,base.group_user,1,1,1,1
+access_saas_license,saas.license,model_saas_license,base.group_user,1,1,1,1
+access_saas_license_type,saas.license.type,model_saas_license_type,base.group_user,1,1,1,1
+access_saas_license_condition_user,saas.license.condition.user,model_saas_license_condition_user,base.group_user,1,1,1,1
+access_saas_license_condition_module,saas.license.condition.module,model_saas_license_condition_module,base.group_user,1,1,1,1

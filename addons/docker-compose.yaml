@@ -1,0 +1,118 @@
+services:
+  # --- Service Base de Données (Intégré) ---
+  postgresql:
+    image: 'postgres:16-alpine'
+    restart: always
+    expose:
+      - "5432" # Accessible uniquement par Odoo en interne
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${SERVICE_USER_POSTGRES:-odoo}
+      - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES:-odoo}
+      - POSTGRES_DB=${ODOO_DATABASE:-prod_db}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${SERVICE_USER_POSTGRES:-odoo} -d ${ODOO_DATABASE:-prod_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # --- Service Odoo ---
+  odoo:
+    image: 'odoo:19'
+    user: root
+    restart: always
+    # On attend que la DB soit prête avant de lancer Odoo
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    expose:
+      - "8069"
+      - "8072"
+
+    # Script de démarrage & Installation
+    entrypoint:
+      - /bin/bash
+      - -c
+      - |
+        echo "[INFO] 🚀 Démarrage All-in-One..." &&
+        
+        # 1. Installation dépendances système
+        apt-get update && apt-get install -y --no-install-recommends \
+            poppler-utils git python3-pip python3-dev build-essential \
+            libldap2-dev libsasl2-dev gettext locales && \
+        locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 &&
+
+        # 2. Clonage du code
+        echo "[INFO] 📥 Clonage Ibatix..." &&
+        rm -rf /tmp/project && rm -rf /mnt/extra-addons/* &&
+        git clone --depth 1 -b ${GITHUB_BRANCH} https://${GITHUB_TOKEN}@${GITHUB_PROJECT} /tmp/project &&
+
+        # 3. Copie des addons
+        echo "[INFO] 📂 Copie des modules..." &&
+        mkdir -p /mnt/extra-addons &&
+        cp -r /tmp/project/addons/* /mnt/extra-addons/ &&
+
+        # 4. Installation Python (Fix Debian 12)
+        echo "[INFO] 🐍 Pip Install..." &&
+        if [ -f "/tmp/project/requirements.txt" ]; then
+          pip3 install --break-system-packages --no-cache-dir -r /tmp/project/requirements.txt
+        fi &&
+
+        # 5. Config Odoo
+        echo "[INFO] ⚙️ Génération odoo.conf..." &&
+        if [ -f "/tmp/project/odoo.conf" ]; then
+          envsubst < /tmp/project/odoo.conf > /etc/odoo/odoo.conf
+        fi &&
+
+        # 6. Lancement (AVEC GESTION DES MISES A JOUR DE MODULES)
+        echo "[INFO] ✅ Lancement Serveur..." &&
+        if [ -n "${ODOO_UPDATE_MODULES}" ]; then
+          echo "[INFO] Mise à jour des modules: ${ODOO_UPDATE_MODULES}" &&
+          exec /entrypoint.sh odoo -d ${ODOO_DATABASE} -u ${ODOO_UPDATE_MODULES} --without-demo=all
+        else
+          exec /entrypoint.sh odoo -d ${ODOO_DATABASE} --without-demo=all
+        fi
+
+    environment:
+      # CORRIGÉ : Force Odoo à utiliser le container postgresql
+      - HOST=postgresql
+      - PORT=5432
+      - USER=${SERVICE_USER_POSTGRES}
+      - PASSWORD=${SERVICE_PASSWORD_POSTGRES}
+
+      # Variables Coolify pour Postgres (Redondance de sécurité)
+      - POSTGRES_HOST=postgresql
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${ODOO_DATABASE}
+      - POSTGRES_USER=${SERVICE_USER_POSTGRES}
+      - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}
+
+      # Variables Odoo / Git
+      - GITHUB_BRANCH=${GITHUB_BRANCH}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_PROJECT=${GITHUB_PROJECT}
+      - ODOO_ADMIN_PASSWORD=${ODOO_ADMIN_PASSWORD}
+      - ODOO_DATABASE=${ODOO_DATABASE}
+      - ODOO_UPDATE_MODULES=${ODOO_UPDATE_MODULES}
+
+      # Tuning Performance
+      - ODOO_WORKERS=${ODOO_WORKERS:-4}
+      - ODOO_LIMIT_TIME_CPU=${ODOO_LIMIT_TIME_CPU:-600}
+      - ODOO_LIMIT_TIME_REAL=${ODOO_LIMIT_TIME_REAL:-1200}
+
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - odoo-extra-addons:/mnt/extra-addons
+
+    healthcheck:
+      test: curl --fail http://localhost:8069/web/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Volumes persistants
+volumes:
+  odoo-web-data:
+  postgresql-data:
+  odoo-extra-addons:

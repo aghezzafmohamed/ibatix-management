@@ -13,8 +13,7 @@
             <div id="wrap" class="ibatix-app">
                 <nav>
                   <a class="nav-logo" href="#">
-                    <img src="/theme_ibatix/static/src/img/logo.png"/>
-                    Ibatix
+                    <img src="/theme_ibatix/static/src/img/logo.png" width="100px"/>
                   </a>
                   <ul class="nav-links">
                     <li><a href="#features">Fonctionnalités</a></li>

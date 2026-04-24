@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="ProCalculatorTool" owl="1">
+        <div class="calculator-dropdown-wrapper" t-ref="root">
+            <button class="calculator-dropdown-toggle" type="button" t-on-click="toggleCalculator">
+                <i class="fa fa-calculator fa-lg"></i>
+            </button>
+
+            <ul class="calculator-dropdown-menu"
+                t-attf-style="z-index: 9999999; position: fixed; right: 30px; top: 46px; display: {{state.isVisible ? 'block' : 'none'}};">
+                <li>
+                    <div class="calculator-tool draggable-tool">
+                        <div class="calculator-app" t-ref="calculatorApp">
+
+                            <div class="calculator-header">
+                                <div class="buttons-row">
+                                    <!-- Drag Button -->
+                                    <button class="drag-button" t-ref="dragHandle" t-on-pointerdown="startDrag">
+                                        <i class="fa fa-bars"></i>
+                                    </button>
+
+                                    <!-- Close Button -->
+                                    <button class="close-button" t-on-click="closeCalculator">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+
+                                <!-- History & Display -->
+                                <div class="calculator-history" t-ref="calcHistory" contenteditable="false"></div>
+                                <input type="text" class="calculator-display" id="calcDisplay" readonly="True" t-ref="calcDisplay"/>
+                            </div>
+
+                            <!-- Calculator Buttons -->
+                            <div class="calculator-buttons">
+                                <button class="btn-number" data-key="7" t-on-click="handleNumberClick">7</button>
+                                <button class="btn-number" data-key="8" t-on-click="handleNumberClick">8</button>
+                                <button class="btn-number" data-key="9" t-on-click="handleNumberClick">9</button>
+                                <button class="btn-operator" data-key="del" t-on-click="handleDeleteClick">→</button>
+                                <button class="btn-clear" data-key="C" t-on-click="handleClearClick">C</button>
+
+                                <button class="btn-number" data-key="4" t-on-click="handleNumberClick">4</button>
+                                <button class="btn-number" data-key="5" t-on-click="handleNumberClick">5</button>
+                                <button class="btn-number" data-key="6" t-on-click="handleNumberClick">6</button>
+                                <button class="btn-operator" data-key="*" t-on-click="handleOperatorClick">*</button>
+                                <button class="btn-operator" data-key="/" t-on-click="handleOperatorClick">/</button>
+
+                                <button class="btn-number" data-key="1" t-on-click="handleNumberClick">1</button>
+                                <button class="btn-number" data-key="2" t-on-click="handleNumberClick">2</button>
+                                <button class="btn-number" data-key="3" t-on-click="handleNumberClick">3</button>
+                                <button class="btn-operator" data-key="-" t-on-click="handleOperatorClick">-</button>
+                                <button class="btn-operator plus" data-key="+" t-on-click="handleOperatorClick">+</button>
+
+                                <button class="btn-operator" data-key="±" t-on-click="handleToggleSign">±</button>
+                                <button class="btn-number" data-key="0" t-on-click="handleNumberClick">0</button>
+                                <button class="btn-operator" data-key="." t-on-click="handleDecimalClick">.</button>
+                                <button class="btn-equals" data-key="=" t-on-click="handleEqualsClick">=</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </t>
+</templates>

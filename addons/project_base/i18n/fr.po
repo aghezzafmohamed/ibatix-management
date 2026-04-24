@@ -1,0 +1,353 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-18 18:49+0000\n"
+"PO-Revision-Date: 2022-12-18 18:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_res_partner__ape
+#: model:ir.model.fields,field_description:project_base.field_res_users__ape
+msgid "APE"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.report_invoice_document_inherit_company_address
+msgid "APE :"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.view_task_form2_code
+msgid "Add a line"
+msgstr "Ajouter une ligne"
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.view_task_form2_code
+msgid "Add a note"
+msgstr "Ajouter une note"
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.view_task_form2_code
+msgid "Add a section"
+msgstr "Ajouter une section"
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.sale_add_task_wizard_form_view
+msgid "Ajouter"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.sale_order_task
+msgid "Ajouter US"
+msgstr ""
+
+#. module: project_base
+#: model:ir.actions.act_window,name:project_base.sale_add_task_wizard_action
+msgid "Ajouter les US"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.sale_add_task_wizard_form_view
+msgid "Annuler"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.view_task_form2_code
+msgid "Channel"
+msgstr "Canal"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__selected
+msgid "Choisi"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__partner_id
+msgid "Client"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_project_task__code
+msgid "Code"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_project_task__order_line_id
+msgid "Commande"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model,name:project_base.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: project_base
+#: model:ir.model,name:project_base.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__create_uid
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__create_uid
+#: model:ir.model.fields,field_description:project_base.field_task_test__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__create_date
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__create_date
+#: model:ir.model.fields,field_description:project_base.field_task_test__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_project_task__guaranteed_date
+msgid "Date de garantie"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_res_company__num_guaranteed_date
+msgid "Date de garantie (mois)"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__date_deadline
+msgid "Date limite"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__display_name
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__display_name
+#: model:ir.model.fields,field_description:project_base.field_task_test__display_name
+msgid "Display Name"
+msgstr "Afficher Nom"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_project_task__invoice_id
+msgid "Facture"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_res_company__ice
+#: model:ir.model.fields,field_description:project_base.field_res_partner__ice
+#: model:ir.model.fields,field_description:project_base.field_res_users__ice
+msgid "ICE"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.report_invoice_document_inherit_company_address
+msgid "ICE :"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.standard_layout_footer_inherited_view
+msgid "ICE:"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__id
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__id
+#: model:ir.model.fields,field_description:project_base.field_task_test__id
+msgid "ID"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.report_invoice_document_inherit_company_address
+msgid "IF :"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model,name:project_base.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard____last_update
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line____last_update
+#: model:ir.model.fields,field_description:project_base.field_task_test____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__write_uid
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__write_uid
+#: model:ir.model.fields,field_description:project_base.field_task_test__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard__write_date
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__write_date
+#: model:ir.model.fields,field_description:project_base.field_task_test__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: project_base
+#: model:ir.model,name:project_base.model_sale_add_task_wizard_line
+msgid "Ligne de wizard add task"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_project_task_type__update_guaranteed_date
+msgid "Mettre à jour date garantie"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_task_test__name
+msgid "Name"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_sale_add_task_wizard_line__name
+msgid "Nom"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model.fields,field_description:project_base.field_account_bank_statement_line__tasks_count
+#: model:ir.model.fields,field_description:project_base.field_account_move__tasks_count
+#: model:ir.model.fields,field_description:project_base.field_account_payment__tasks_count
+msgid "Nombre de tâches"
+msgstr ""
+
+#. module: project_base
+#: model_terms:ir.ui.view,arch_db:project_base.standard_layout_footer_inherited_view
+msgid ""
+"Page:\n"
+"                        <span class=\"page\"/>\n"
+"                        /\n"
+"                        <span class=\"topage\"/>"
+msgstr ""
+
+#. module: project_base
+#: model:ir.model,name:project_base.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_order_line__project_ids
+msgid "Projects"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,help:imaltech_base.field_sale_order_line__project_ids
+msgid "Projects used in this sales order."
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_add_task_wizard_line__project_id
+msgid "Projet"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_res_partner__siret
+#: model:ir.model.fields,field_description:imaltech_base.field_res_users__siret
+msgid "SIRET"
+msgstr ""
+
+#. module: imaltech_base
+#: model_terms:ir.ui.view,arch_db:imaltech_base.report_invoice_document_inherit_company_address
+msgid "SIRET :"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_task_test__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_add_task_wizard_line__sequence
+msgid "Séquence"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_project_project__task_sequence
+msgid "Séquence de l'US"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_project_task
+#: model:ir.model.fields,field_description:imaltech_base.field_task_test__task_id
+msgid "Task"
+msgstr "Tâche"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_add_task_wizard__task_line_ids
+msgid "Task Line"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_project_task_type
+msgid "Task Stage"
+msgstr "Étape de tâche"
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_task_test
+msgid "Task Test"
+msgstr "Test des tache"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_task_test__tested
+msgid "Tested"
+msgstr "Testé"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_task_test__date
+msgid "Tested Date"
+msgstr "Date de teste"
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_project_task__task_test_ids
+#: model_terms:ir.ui.view,arch_db:imaltech_base.view_task_form2_code
+msgid "Tests"
+msgstr "Testes"
+
+#. module: imaltech_base
+#: model_terms:ir.ui.view,arch_db:imaltech_base.view_move_form_inherit_task
+msgid "Tâches"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_add_task_wizard_line__task_id
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_order_line__task_ids
+msgid "US"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model.fields,field_description:imaltech_base.field_sale_add_task_wizard_line__wizard_id
+msgid "Wizard"
+msgstr ""
+
+#. module: imaltech_base
+#: model:ir.model,name:imaltech_base.model_sale_add_task_wizard
+msgid "Wizard pour ajouter des tasks"
+msgstr ""
+
+#. module: imaltech_base
+#: model_terms:ir.ui.view,arch_db:imaltech_base.standard_layout_footer_inherited_view
+msgid "| SiteWeb:"
+msgstr ""
+
+#. module: imaltech_base
+#: model_terms:ir.ui.view,arch_db:imaltech_base.standard_layout_footer_inherited_view
+msgid "| Tél:"
+msgstr ""

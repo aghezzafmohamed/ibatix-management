@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="layout" inherit_id="web.layout">
+        <xpath expr="//link[@rel='shortcut icon']" position="before">
+            <t t-if="not website">
+                <t t-set="x_icon" t-value="'/web_favicon/favicon'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="brand_promotion" inherit_id="web.brand_promotion">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+
+    <template id="replace_logintitle" name="Login Layout title " inherit_id="web.layout">
+        <xpath expr="//head/title" position="replace">
+            <title t-esc="mytitle or 'ItriSol'"/>
+        </xpath>
+        <xpath expr="//head/link" position="replace">
+          <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon1 or '/web_custome/static/src/img/favicon.png'"/>
+        </xpath>
+    </template>
+</odoo>

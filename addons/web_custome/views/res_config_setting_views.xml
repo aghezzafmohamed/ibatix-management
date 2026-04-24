@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="res_config_settings_view_form_extend">
+        <field name="name">res.config.settings.view.form.extend</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='about']" position="replace">
+                <div id="about">
+                    <h2>About</h2>
+                    <div class="row mt16 o_settings_container" name="about_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box" id="itrisol">
+                            <div class="d-flex">
+                                <div>
+                                    <a class="d-block mx-auto" href="https://itrisol.com"
+                                       target="blank">
+                                        <img style="max-height:100pt;" alt="itrisol" class="d-block mx-auto img img-fluid"
+                                             src="/web_custome/static/src/img/itrisol-logo.png"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6" id="swuridev_copyright" style="margin: auto !important;">
+                            <div class="o_setting_right_pane">
+                                <div>
+                                    <i class="fa fa-fw me-2 fa-phone text-primary" title="ItriSol"/>
+                                    <b>+212 708-767406</b>
+                                </div>
+                                <div class="user-heading">
+                                    <b>
+                                        <i class="fa fa-fw me-2 fa-linkedin text-primary" title="ItriSol"/><i class="fa fa-fw me-2 fa-youtube text-primary" title="ItriSol"/><i class="fa fa-fw me-2 fa-instagram text-primary" title="ItriSol"/><i class="fa fa-fw me-2 fa-facebook text-primary" title="ItriSol"/> / ItriSol
+                                    </b>
+                                </div>
+                                <div>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" id="settings"
+                                             class="tab-pane active text-muted o_web_settings_compact_subtitle">
+                                            <small>Copyright © 2025
+                                                <a target="_blank" href="https://itrisol.com" style="text-decoration: underline;"></a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

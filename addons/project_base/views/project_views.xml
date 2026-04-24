@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- project.project Inherited Form -->
+        <record id="project_project_sequence" model="ir.ui.view">
+            <field name="name">project.project.sequence</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='settings']//field[@name='privacy_visibility']" position="after">
+                    <field name="task_sequence"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- project.task Inherited Form -->
+        <record id="view_task_form2_code" model="ir.ui.view">
+    <field name="name">project.task.form.code</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='user_ids']" position="after">
+            <field name="code" readonly="1"/>
+        </xpath>
+        <xpath expr="//page[@name='sub_tasks_page']" position="after">
+            <page name="task_test" string="Tests">
+                <field name="task_test_ids">
+                    <list string="Tests" editable="bottom" default_order="sequence, name" widget="section_and_note_one2many" mode="list">
+                        <control>
+                            <create name="add_line_control" string="Add a line"/>
+                            <create name="add_section_control" string="Add a section"
+                                    context="{'default_display_type': 'line_section'}"/>
+                            <create name="add_note_control" string="Add a note"
+                                    context="{'default_display_type': 'line_note'}"/>
+                        </control>
+                        <field name="sequence" invisible="1"/>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="tested" widget="boolean_toggle"/>
+                    </list>
+                    <form string="Tests">
+                        <sheet>
+                            <group>
+                                <field name="sequence" invisible="1"/>
+                                <field name="name"/>
+                                <field name="date"/>
+                                <field name="tested"/>
+                            </group>
+                        </sheet>
+                    </form>
+                    <kanban class="o_kanban_mobile">
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="tested"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <strong>
+                                                <field name="name"/>
+                                            </strong>
+                                        </div>
+                                        <div class="col-12">
+                                            <span>
+                                                <field name="date"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>
+                                                <field name="tested" widget="boolean_toggle"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                </field>
+            </page>
+        </xpath>
+        <xpath expr="//field[@name='recurring_task']" position="after">
+            <field name="invoice_id" invisible="parent_id != False"/>
+            <field name="guaranteed_date"/>
+        </xpath>
+    </field>
+</record>
+
+        <!-- project.task.type Inherited Form -->
+        <record id="task_type_edit_inherited" model="ir.ui.view">
+            <field name="name">project.task.type.inherited</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_ids']" position="after">
+                    <field name="update_guaranteed_date" widget="boolean_toggle"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- project.task Inherited Kanban -->
+        <record id="project_task_view_kanban_code" model="ir.ui.view">
+            <field name="name">project.task.kanban.code</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <span>
+                        <br/>
+                        <field name="code"/>
+                    </span>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,112 @@
+$primary-dark: #023e8a !default;
+$primary-light: #fac400 !default;
+$bg-light: #f0f0f7 !default;
+$bg-input: #ececec !default;
+$bg-btn: #e4e4e4 !default;
+$bg-btn-hover: #d0d0d0 !default;
+$text-color: #495057 !default;
+
+@mixin btn-style($bg, $color: inherit) {
+  background-color: $bg;
+  color: $color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover { background-color: darken($bg, 5%); }
+}
+
+.calculator-dropdown-wrapper {
+        display: flex;
+    position: relative;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    .calculator-dropdown-toggle {
+        background: none;
+        border: none;
+        padding: 0 0.75rem;
+        color: whitesmoke;
+        cursor: pointer;
+    }
+
+    .calculator-dropdown-menu {
+            display: flex;
+    position: relative;
+        list-style: none;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+    }
+}
+
+.calculator-app {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 320px;
+    padding: 15px;
+    background-color: $bg-light;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.15s ease-out;
+
+    .calculator-display {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        background-color: $bg-input;
+        padding: 10px;
+        text-align: right;
+        font-size: 32px;
+    }
+
+    .calculator-history {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 5px;
+        font-size: 15px;
+        color: $text-color;
+        background-color: $bg-input;
+        border-radius: 5px;
+        padding: 10px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar { display: none; }
+    }
+
+    .calculator-buttons {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+
+        button {
+            height: 52px;
+            font-size: 28px;
+            @include btn-style($bg-btn);
+
+            &.btn-number { background: #fff; color: #000; &:hover { background: $bg-btn-hover; } }
+            &.btn-operator { color: $primary-dark; }
+            &.btn-equals { grid-column: span 2; background: $primary-dark; color: #fff; &:hover { background: $primary-light; } }
+            &.btn-clear { background: #acacac; color: #fff; &:hover { background: $primary-light; } }
+        }
+    }
+
+    .calculator-header {
+        .buttons-row {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
+
+            .drag-button { float: left; cursor: grab; font-size: 18px; background: none; border: none; padding: 4px; margin-top: -10px; &:active { cursor: grabbing; } }
+            .close-button { float: right; cursor: pointer; font-size: 18px; background: none; border: none; padding: 4px; margin-top: -10px; }
+        }
+    }
+}
+
+.fa-calculator { color: #fff; }

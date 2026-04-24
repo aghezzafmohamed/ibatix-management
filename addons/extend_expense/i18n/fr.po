@@ -1,0 +1,479 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* extend_expense
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-15 17:10+0000\n"
+"PO-Revision-Date: 2024-09-15 17:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__approved
+msgid "Approved"
+msgstr "Approuvé"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_form
+msgid "Attach Receipt"
+msgstr "Joindre le reçu"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__draft
+msgid "Brouillon"
+msgstr ""
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Company"
+msgstr "Société"
+
+#. module: extend_expense
+#: model_terms:ir.actions.act_window,help:extend_expense.itrisol_hr_expense_actions
+msgid "Drag and drop files to create expenses"
+msgstr "Glissez et déposez des fichiers pour créer des notes de frais"
+
+#. module: extend_expense
+#: model:ir.model,name:extend_expense.model_hr_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Expense"
+msgstr "Note de frais"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Expense Date"
+msgstr "Date de la dépense"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Future Activities"
+msgstr "Activités futures"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Group By"
+msgstr "Regrouper par"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Late Activities"
+msgstr "Activités en retard"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_form
+msgid "Notes..."
+msgstr ""
+
+#. module: extend_expense
+#: model_terms:ir.actions.act_window,help:extend_expense.itrisol_hr_expense_actions
+msgid "Or"
+msgstr "Ou"
+
+#. module: extend_expense
+#: model:ir.model.fields,field_description:extend_expense.field_hr_expense__payment_mode
+msgid "Paid By"
+msgstr "Payé par"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__refused
+msgid "Refused"
+msgstr "Refusée"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Show all records which has next action date is before today"
+msgstr ""
+"Montrez tous les enregistrements pour lesquels la date des prochaines "
+"actions est pour aujourd'hui ou avant. "
+
+#. module: extend_expense
+#: model_terms:ir.actions.act_window,help:extend_expense.itrisol_hr_expense_actions
+msgid ""
+"Snap pictures of your receipts and let ItriSol<br> automatically create "
+"expenses for you."
+msgstr ""
+"Prenez une photo de vos tickets de caisse et laissez <br>ItriSol "
+"automatiquement créer des notes de frais pour vous."
+
+#. module: extend_expense
+#: model:ir.model.fields,field_description:extend_expense.field_hr_expense__state
+msgid "Status"
+msgstr "Statut"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__submitted
+msgid "Submitted"
+msgstr "Soumis"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__reported
+msgid "To Submit"
+msgstr "À soumettre"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_search
+msgid "Today Activities"
+msgstr "Activités du jour"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_form
+msgid "Total"
+msgstr ""
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_tree
+msgid "Total Amount"
+msgstr "Montant total"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_tree
+msgid "Total Taxes"
+msgstr "Total des taxes"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_tree
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_form
+msgid "Validate"
+msgstr "Valider"
+
+#. module: extend_expense
+#: model:ir.model.fields.selection,name:extend_expense.selection__hr_expense__state__done
+msgid "Validé"
+msgstr ""
+
+#. module: extend_expense
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_form
+msgid "e.g. Lunch with Customer"
+msgstr "par ex. Déjeuner avec un Client"
+
+#. module: hr_expense
+#: model:ir.actions.act_window,name:hr_expense.hr_expense_actions_my_all
+#: model:ir.ui.menu,name:hr_expense.menu_hr_expense_my_expenses
+#: model:ir.ui.menu,name:hr_expense.menu_hr_expense_my_expenses_all
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_search
+#: model:ir.actions.act_window,name:extend_expense.itrisol_hr_expense_actions
+msgid "My Expenses"
+msgstr "Dépenses"
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense_sheet.py:0
+#: model:ir.ui.menu,name:hr_expense.menu_hr_expense_root
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_department_view_kanban
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_sheet_view_activity
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_activity
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_expenses_analysis_tree
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_form
+#: model_terms:ir.ui.view,arch_db:hr_expense.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_form
+#: model_terms:ir.ui.view,arch_db:extend_expense.itrisol_hr_expense_view_tree
+#, python-format
+msgid "Expenses"
+msgstr "Dépenses"
+
+#. module: hr_expense
+#: model:ir.actions.act_window,name:hr_expense.hr_expense_actions_all
+#: model:ir.ui.menu,name:hr_expense.menu_hr_expense_all_expenses
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_graph
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_pivot
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_graph
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_pivot
+msgid "Expenses Analysis"
+msgstr "Analyse des dépenses"
+
+#. module: hr_expense
+#: model:ir.actions.report,name:hr_expense.action_report_hr_expense_sheet
+#: model_terms:ir.ui.view,arch_db:hr_expense.report_expense_sheet
+msgid "Expenses Report"
+msgstr "Rapport de dépenses"
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/account_move.py:0
+#, python-format
+msgid "Expense entry created from: %s"
+msgstr "Écriture de dépenses créée à partir de : %s"
+
+#. module: hr_expense
+#: model:ir.actions.report,name:hr_expense.action_report_expense_sheet_img
+msgid "Expense Report Image"
+msgstr "Image de la dépense"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense_sheet__name
+msgid "Expense Report Summary"
+msgstr "Résumé de la dépense"
+
+#. module: hr_expense
+#: model:ir.ui.menu,name:hr_expense.menu_hr_expense_report
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_department_view_kanban
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_form
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_tree
+msgid "Expense Reports"
+msgstr "Rapports de dépense"
+
+#. module: hr_expense
+#. odoo-javascript
+#: code:addons/hr_expense/static/src/js/tours/hr_expense.js:0
+#, python-format
+msgid ""
+"Enter a name then choose a category and configure the amount of your "
+"expense."
+msgstr ""
+"Saisissez un nom, puis choisissez une catégorie et configurez le montant de "
+"votre dépense."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/wizard/hr_expense_approve_duplicate.py:0
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense__duplicate_expense_ids
+#, python-format
+msgid "Duplicate Expense"
+msgstr "Dupliquer la dépense"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_product_product__can_be_expensed
+#: model:ir.model.fields,field_description:hr_expense.field_product_template__can_be_expensed
+#: model_terms:ir.ui.view,arch_db:hr_expense.product_template_search_view_inherit_hr_expense
+msgid "Can be Expensed"
+msgstr "Peut être inséré dans une dépense"
+
+#. module: hr_expense
+#. odoo-javascript
+#: code:addons/hr_expense/static/src/views/expense_form_view.js:0
+#, python-format
+msgid "An expense of same category, amount and date already exists."
+msgstr "Une dépense de même catégorie, montant et date existe déjà."
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_move_form_inherit_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.view_payment_form_inherit_expense
+msgid "<span class=\"o_stat_text\">Expense Report</span>"
+msgstr "<span class=\"o_stat_text\">Rapport de dépense</span>"
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense.py:0
+#, python-format
+msgid ""
+"%(user)s confirms this expense is not a duplicate with similar expense."
+msgstr ""
+"%(user)s confirme que cette note de dépense n'est pas un doublon avec une "
+"dépense similaire."
+
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_template_refuse_reason
+msgid "Your Expense Report"
+msgstr "Votre dépense"
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_template_register
+msgid "Your expense has been successfully registered."
+msgstr "Votre dépense a été enregistrée avec succès."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense.py:0
+#, python-format
+msgid "You have no expense to report"
+msgstr "Vous n'avez pas de note de dépense à déclarer"
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/account_payment.py:0
+#, python-format
+msgid ""
+"You cannot do this modification since the payment is linked to an expense "
+"report."
+msgstr ""
+"Vous ne pouvez pas effectuer cette modification, puisque le paiement est lié"
+" à une dépense."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense.py:0
+#, python-format
+msgid "You cannot delete a posted or approved expense."
+msgstr ""
+"Vous ne pouvez pas supprimer une dépense comptabilisée ou approuvée."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense_sheet.py:0
+#, python-format
+msgid "You cannot delete a posted or paid expense."
+msgstr ""
+"Vous ne pouvez pas supprimer une dépense comptabilisée ou payée."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/analytic.py:0
+#, python-format
+msgid "You cannot delete an analytic account that is used in an expense."
+msgstr ""
+"Vous ne pouvez pas supprimer un compte analytique utilisé dans une dépense."
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_template_register
+msgid "View Expense"
+msgstr "Voir la dépense"
+
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_hr_expense_split_wizard__total_amount_currency_original
+msgid "Total amount of the original Expense that we are splitting"
+msgstr "Montant total de la dépense initiale que nous divisons"
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.product_product_expense_form_view
+msgid ""
+"This note will be shown to users when they select this expense product."
+msgstr ""
+"Cette note sera présentée aux utilisateurs lorsqu'ils sélectionneront ce "
+"produit de dépense."
+
+#. module: hr_expense
+#: model:ir.model.constraint,message:hr_expense.constraint_hr_expense_sheet_journal_id_required_posted
+msgid "The journal must be set on posted expense"
+msgstr "Le journal doit être défini sur une dépense comptabilisée"
+
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_hr_expense_sheet__employee_journal_id
+msgid "The journal used when the expense is paid by employee."
+msgstr "Le journal utilisé lorsque la dépense est payée par l'employé."
+
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_hr_expense_sheet__payment_method_line_id
+msgid "The payment method used when the expense is paid by the company."
+msgstr ""
+"Le mode de paiement utilisé lorsque la dépense est payée par la "
+"société."
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_template_register
+msgid ""
+"The first word of the email subject did not correspond to any category code."
+" You'll have to set the category manually on the expense."
+msgstr ""
+"Le premier mot de l'objet de l'email ne correspond à aucun code de "
+"catégorie. Vous devrez définir la catégorie manuellement sur la dépense."
+
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_product_product__can_be_expensed
+#: model:ir.model.fields,help:hr_expense.field_product_template__can_be_expensed
+msgid "Specify whether the product can be selected in an expense."
+msgstr "Indiquez si le produit peut être sélectionné dans une dépense."
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_split
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_view_form
+msgid "Split Expense"
+msgstr "Fractionner la dépense"
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.res_config_settings_view_form
+msgid ""
+"Send an email to this email alias with the receipt in attachment to create "
+"an expense in one click. If the first word of the mail subject contains the "
+"category's internal reference or the category name, the corresponding "
+"category will automatically be set. Type the expense amount in the mail "
+"subject to set it on the expense too."
+msgstr ""
+"Envoyez un email à cet alias avec le reçu en pièce jointe pour créer une "
+"note de frais en un clic. Si le premier mot de l'objet du courrier contient "
+"la référence interne de la catégorie ou le nom de la catégorie, la catégorie"
+" correspondante sera automatiquement définie. Tapez le montant de la dépense"
+" dans l'objet du courrier pour le définir également sur la dépense."
+
+#. module: hr_expense
+#: model:ir.actions.act_window,name:hr_expense.hr_expense_refuse_wizard_action
+msgid "Refuse Expense"
+msgstr "Refuser la dépense"
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_refuse_wizard_view_form
+msgid "Reason to refuse Expense"
+msgstr "Motif du refus de la dépense"
+
+#. module: hr_expense
+#: model_terms:ir.actions.act_window,help:hr_expense.action_hr_expense_account
+#: model_terms:ir.actions.act_window,help:hr_expense.action_hr_expense_sheet_all_all
+#: model_terms:ir.actions.act_window,help:hr_expense.action_hr_expense_sheet_my_all
+msgid ""
+"Once you have created your expense, submit it to your manager who will "
+"validate it."
+msgstr ""
+"Après avoir créé une dépense, soumettez-la pour validation à votre "
+"manager."
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense.py:0
+#, python-format
+msgid "New Expense Report, paid by %(paid_by)s"
+msgstr "Nouvelle dépense, payée par %(paid_by)s"
+
+#. module: hr_expense
+#. odoo-python
+#: code:addons/hr_expense/models/hr_expense.py:0
+#, python-format
+msgid "Expense split"
+msgstr "Fractionnement de dépense"
+
+#. module: hr_expense
+#: model_terms:ir.ui.view,arch_db:hr_expense.hr_expense_refuse_wizard_view_form
+msgid "Expense refuse reason"
+msgstr "Motif de refus de la dépense"
+
+#. module: hr_expense
+#: model:mail.message.subtype,description:hr_expense.mt_expense_approved
+msgid "Expense report approved"
+msgstr "Dépense approuvée"
+
+#. module: hr_expense
+#: model:ir.actions.act_window,name:hr_expense.action_hr_expense_sheet_department_filtered
+msgid "Expense Reports Analysis"
+msgstr "Analyse des dépenses"
+
+#. module: hr_expense
+#: model:ir.actions.act_window,name:hr_expense.action_hr_expense_sheet_department_to_approve
+msgid "Expense Reports to Approve"
+msgstr "Dépense à approuver"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_account_bank_statement_line__expense_sheet_id
+#: model:ir.model.fields,field_description:hr_expense.field_account_move__expense_sheet_id
+#: model:ir.model.fields,field_description:hr_expense.field_account_payment__expense_sheet_id
+msgid "Expense Sheet"
+msgstr "Dépense"
+
+#. module: hr_expense
+#: model:ir.model,name:hr_expense.model_hr_expense_split
+msgid "Expense Split"
+msgstr "Fractionnement des Dépenses"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense_split_wizard__expense_split_line_ids
+msgid "Expense Split Line"
+msgstr "Ligne de fractionnement de Dépense"
+
+#. module: hr_expense
+#: model:ir.model,name:hr_expense.model_hr_expense_split_wizard
+msgid "Expense Split Wizard"
+msgstr "Assistant fractionnement de Dépense"

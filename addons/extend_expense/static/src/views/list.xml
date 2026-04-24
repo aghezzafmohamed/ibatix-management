@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="extend_expense.ListButtons" t-inherit="hr_expense.ListButtons" t-inherit-mode="extension">
+        <xpath expr="//button[@t-on-click='() => this.action_show_expenses_to_submit()']" position="replace"/>
+    </t>
+</templates>

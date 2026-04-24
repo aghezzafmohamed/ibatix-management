@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_login_layout_bg" inherit_id="web.login_layout" name="Custom Login Background">
+
+        <xpath expr="//div[hasclass('container')]" position="before">
+            <div class="itrisol-fullscreen-bg"></div>
+        </xpath>
+
+        <xpath expr="//t[@t-if='not disable_database_manager']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+</odoo>

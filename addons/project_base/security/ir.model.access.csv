@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_add_task_wizard,project_base.sale_add_task_wizard,model_sale_add_task_wizard,base.group_user,1,1,1,1
+access_sale_add_task_wizard_line,project_base.sale_add_task_wizard_line,model_sale_add_task_wizard_line,base.group_user,1,1,1,1
+access_task_test,Task Test Manager,model_task_test,base.group_user,1,1,1,1

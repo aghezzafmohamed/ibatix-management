@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* web_custome
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-24 10:13+0000\n"
+"PO-Revision-Date: 2023-01-24 10:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: web_custome
+#: model_terms:ir.ui.view,arch_db:web_custome.res_config_settings_view_form_extend
+msgid "About"
+msgstr "À propos"
+
+#. module: web_custome
+#: model_terms:ir.ui.view,arch_db:web_custome.res_config_settings_view_form_extend
+msgid "Copyright © 2022"
+msgstr ""
+
+#. module: web_custome
+#. odoo-javascript
+#: code:addons/web_custome/static/src/js/user_menuitems.js:0
+#, python-format
+msgid "Imal Tech"
+msgstr ""
+
+#. module: web_custome
+#: model_terms:ir.ui.view,arch_db:web_custome.res_config_settings_view_form_extend
+msgid "Imal-Tech"
+msgstr ""
+
+#. module: web_custome
+#: model_terms:ir.ui.view,arch_db:web_custome.res_config_settings_view_form_extend
+msgid "Imal-tech"
+msgstr ""
+
+#. module: web_custome
+#: model_terms:ir.ui.view,arch_db:web_custome.login_layout_hide_powered_by_and_manage_db
+msgid "Logo"
+msgstr ""
+
+#. module: web_custome
+#. odoo-javascript
+#: code:addons/web_custome/static/src/js/user_menuitems.js:0
+#, python-format
+msgid "My profile"
+msgstr "Mon profil"
+
+#. module: web_custome
+#: model:ir.model,name:web_custome.model_publisher_warranty_contract
+msgid "Publisher Warranty Contract"
+msgstr "Contrat de Garantie de l'Editeur"

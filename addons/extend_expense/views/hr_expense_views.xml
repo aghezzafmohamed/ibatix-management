@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_expense_view_form_extend" model="ir.ui.view">
+        <field name="name">hr.expense.view.form</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_submit'][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_submit'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state'][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="itrisol_hr_expense_view_form" model="ir.ui.view">
+        <field name="name">hr.expense.view.form.itrisol</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" string="Validate" type="object" class="oe_highlight"
+                            invisible="nb_attachment == 0 or state != 'draft'" data-hotkey="v"/>
+                    <widget name="attach_document" string="Attach Receipt" action="attach_document" highlight="1"
+                            invisible="nb_attachment &gt;= 1"/>
+                    <widget name="attach_document" string="Attach Receipt" action="attach_document"
+                            invisible="nb_attachment == 0"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Lunch with Customer" readonly="not is_editable"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="product_has_cost" invisible="1"/>
+                            <field name="product_has_tax" invisible="1"/>
+                            <field name="is_multiple_currency" invisible="1"/>
+                            <field name="is_editable" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="tax_amount" invisible="1"/>
+                            <field name="price_unit" invisible="1"/>
+                            <field name="nb_attachment" invisible="1"/>
+                            <field name="total_amount" invisible="1"/>
+                            <field name="duplicate_expense_ids" invisible="1"/>
+                            <field name="currency_rate" invisible="1"/>
+                            <field name="selectable_payment_method_line_ids" invisible="1"/>
+
+                            <label for="product_id"/>
+                            <div>
+                                <field name="product_id" required="1" readonly="not is_editable"
+                                       context="{'default_detailed_type': 'service', 'default_can_be_expensed': 1, 'tree_view_ref': 'hr_expense.product_product_expense_tree_view', 'form_view_ref': 'hr_expense.product_product_expense_form_view'}"
+                                       class="w-100"/>
+                                <div class="fst-italic"
+                                     invisible="not is_editable or not product_description or not product_id">
+                                    <field name="product_description"/>
+                                </div>
+                            </div>
+
+                            <!-- CASE: product has a cost defined -> user input qty (always in company currency) -->
+                            <field name="price_unit" required="1" widget="monetary"
+                                   options="{'currency_field': 'currency_id', 'field_digits': True}"
+                                   invisible="not product_has_cost" readonly="True"/>
+                            <label for="quantity" invisible="not product_has_cost"/>
+                            <div invisible="not product_has_cost">
+                                <div class="o_row">
+                                    <field name="quantity" class="oe_inline" readonly="not is_editable"/>
+                                    <field name="product_uom_id" required="1" force_save="1"
+                                           options="{'no_open': True, 'no_create': True}" groups="uom.group_uom"
+                                           readonly="not is_editable"/>
+                                </div>
+                            </div>
+
+                            <!-- CASE: product has no cost defined -> user input amount (in other currency if multi-currency) -->
+                            <label for="total_amount_currency" string="Total" invisible="product_has_cost"
+                                   readonly="not is_editable"/>
+                            <div class="o_row" invisible="product_has_cost">
+                                <field name="total_amount_currency" widget='monetary'
+                                       options="{'currency_field': 'currency_id'}"
+                                       readonly="not is_editable" class="oe_inline mw-50 me-0"/>
+                                <field name="currency_id" class="mw-25 ms-0" groups="base.group_multi_currency"
+                                       options="{'no_create': True}"
+                                       readonly="not is_editable"/>
+                            </div>
+
+                            <!-- CASE: converter when currency is different than the company one -->
+                            <label for="total_amount" string=""
+                                   invisible="not is_multiple_currency and not product_has_cost"/>
+                            <div class="o_row" invisible="not is_multiple_currency and not product_has_cost">
+                                <field name="total_amount" widget='monetary'
+                                       options="{'currency_field': 'company_currency_id'}"
+                                       force_save="1" readonly="not is_editable or product_has_cost" class="oe_inline"/>
+                                <field name="label_currency_rate" class="ps-0"/>
+                            </div>
+
+                            <label for="tax_ids"/>
+                            <div class="o_row">
+                                <field name="tax_ids"
+                                       force_save="1"
+                                       widget="many2many_tags"
+                                       readonly="not is_editable"
+                                       options="{'no_create': True}"/>
+                                <field name="tax_amount"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="date" readonly="not is_editable" class="w-50"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                            <field name="manager_id" widget="many2one_avatar_user" readonly="state != 'draft'"
+                                   placeholder="Auto-validation"/>
+                            <field name="department_id" invisible="1" readonly="not is_editable"
+                                   context="{'default_company_id': company_id}"/>
+                            <field name="account_id" options="{'no_create': True}"
+                                   domain="[('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card')), ('company_ids', 'parent_of', company_id)]"
+                                   groups="account.group_account_readonly" readonly="not is_editable"
+                                   context="{'default_company_id': company_id}"/>
+                            <field name="payment_method_line_id"
+                                   options="{'no_open': True, 'no_create': True}"
+                                   invisible="payment_mode != 'company_account'"
+                                   readonly="not is_editable"
+                                   required="payment_mode == 'company_account'"/>
+                            <field name="analytic_distribution" widget="analytic_distribution"
+                                   groups="analytic.group_analytic_accounting"
+                                   options="{'product_field': 'product_id', 'account_field': 'account_id', 'business_domain': 'expense'}"
+                                   readonly="not is_editable"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <div>
+                        <field name="description" placeholder="Notes..." readonly="not is_editable"/>
+                    </div>
+                </sheet>
+                <div class="o_attachment_preview o_center_attachment"/>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="itrisol_hr_expense_view_tree" model="ir.ui.view">
+        <field name="name">hr.expense.list.itrisol</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <list string="Expenses" multi_edit="1" sample="1" js_class="hr_expense_tree"
+                  decoration-info="state == 'draft'">
+                <field name="is_editable" column_invisible="True"/>
+                <field name="company_id" column_invisible="True"/>
+                <field name="company_currency_id" column_invisible="True"/>
+                <field name="nb_attachment" column_invisible="True"/>
+                <field name="is_multiple_currency" column_invisible="True"/>
+                <field name="product_has_cost" column_invisible="True"/>
+                <field name="selectable_payment_method_line_ids" column_invisible="True"/>
+                <field name="date" optional="show" readonly="not is_editable"/>
+                <field name="product_id" optional="hide" readonly="not is_editable"/>
+                <field name="payment_mode" optional="show" readonly="not is_editable"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="analytic_distribution" widget="analytic_distribution"
+                       optional="show"
+                       groups="analytic.group_analytic_accounting"
+                       readonly="not is_editable"
+                       options="{'product_field': 'product_id', 'business_domain': 'expense'}"/>
+                <field name="account_id" optional="hide" groups="account.group_account_readonly"
+                       readonly="not is_editable"/>
+                <field name="company_id" optional="show" groups="base.group_multi_company" readonly="True"/>
+                <field name="price_unit" string="Unit Price" optional="hide" widget="monetary"
+                       options="{'currency_field': 'company_currency_id', 'field_digits': True}" readonly="True"/>
+                <field name="quantity" optional="hide" readonly="not is_editable or not product_has_cost"/>
+                <field name="tax_ids" optional="hide" widget="many2many_tags"
+                       groups="account.group_account_invoice,account.group_account_readonly"
+                       readonly="not is_editable or not product_has_cost"/>
+                <field name="tax_amount" sum="Total Taxes" readonly="True"
+                       optional="hide" groups="account.group_account_invoice,account.group_account_readonly"/>
+                <field name="nb_attachment" widget="nb_attachment" nolabel="1" readonly="True"/>
+                <field name="total_amount" sum="Total Amount" widget='monetary'
+                       readonly="not is_editable or product_has_cost"
+                       options="{'currency_field': 'company_currency_id'}" decoration-bf="1"/>
+                <field name="total_amount_currency" widget='monetary'
+                       readonly="not is_editable or not is_multiple_currency or product_has_cost"
+                       options="{'currency_field': 'currency_id'}" optional="hide" decoration-bf="1"
+                       groups="base.group_multi_currency"/>
+                <field name="currency_id" optional="hide" readonly="True" groups="base.group_multi_currency"/>
+                <field name="state" optional="show" readonly="True" decoration-info="state in ['draft', 'reported']"
+                       decoration-success="state in ['approved', 'done']"
+                       decoration-warning="state == 'submitted'" decoration-danger="state == 'refused'" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="itrisol_hr_expense_view_search" model="ir.ui.view">
+        <field name="name">hr.expense.view.search.itrisol</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <search string="Expense">
+                <field string="Expense" name="name" filter_domain="['|', '|', ('employee_id', 'ilike', self), ('name', 'ilike', self), ('product_id', 'ilike', self)]"/>
+                <field name="date"/>
+                <separator/>
+                <separator/>
+                <filter string="Expense Date" name="date" date="date"/>
+                <separator/>
+                <filter invisible="1" string="Late Activities" name="activities_overdue"
+                        domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                        help="Show all records which has next action date is before today"/>
+                <filter invisible="1" string="Today Activities" name="activities_today"
+                        domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter invisible="1" string="Future Activities" name="activities_upcoming_all"
+                        domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="itrisol_hr_expense_actions" model="ir.actions.act_window">
+        <field name="name">My Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">list,kanban,form,graph,pivot,activity</field>
+        <field name="search_view_id" ref="itrisol_hr_expense_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_expense_receipt">
+                <h2 class="d-none d-md-block">
+                    Drag and drop files to create expenses
+                </h2>
+            </p>
+            <p>Snap pictures of your receipts and let ItriSol
+                <br/>
+                automatically create expenses for you.
+            </p>
+        </field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+              (0, 0, {'view_mode': 'list', 'view_id': ref('itrisol_hr_expense_view_tree')}),
+              (0, 0, {'view_mode': 'form', 'view_id': ref('itrisol_hr_expense_view_form')}),
+             ]"/>
+    </record>
+
+    <record id="hr_expense.menu_hr_expense_my_expenses_all" model="ir.ui.menu">
+        <field name="action" ref="extend_expense.itrisol_hr_expense_actions"/>
+    </record>
+</odoo>

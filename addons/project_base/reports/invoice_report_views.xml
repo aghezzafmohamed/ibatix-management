@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="standard_layout_footer_inherited_view" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@class='o_footer_content d-flex border-top pt-2']" position="replace">
+            <div t-attf-class="o_footer_content o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <div class="text-center h6 ">
+                        <ul class="list-inline mb4">
+                            <small>
+                                <b>
+                                    <span style="color:#283374" class="o_force_ltr" t-field="company.name"/><br/>
+                                    <span t-if="company.street" t-field="company.street"/>
+                                    <span t-if="company.street2" t-field="company.street2"/>
+                                    –
+                                    <span t-if="company.zip" t-field="company.zip"/>
+                                    <span t-if="company.city" t-field="company.city"/>
+                                </b>
+                                <br/>
+                                <t t-if="company.ice">ICE:
+                                    <span class="o_force_ltr" t-field="company.ice"/>
+                                </t>
+                                <t t-if="company.phone">| Tél:
+                                    <span class="o_force_ltr" t-field="company.phone"/>
+                                </t>
+                                <t t-if="company.website">| SiteWeb:
+                                    <span class="o_force_ltr" t-field="company.website"/>
+                                </t>
+                            </small>
+                        </ul>
+                    </div>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+        <!-- Inherit account.move report -->
+    <template id="report_invoice_document_inherit_company_address" inherit_id="account.report_invoice_document">
+        <xpath expr="//t[@t-set='address']" position="replace"/>
+        <xpath expr="//p[@name='payment_communication']" position="replace"/>
+        <xpath expr="//t[@t-set='forced_vat']" position="before">
+            <div class="row" style="margin-bottom:40px;">
+                <div class="col-6 float-left">
+                    <h5>
+                        <span t-field="o.company_id.name"/>
+                    </h5>
+                    <div style="font-size: 15px;">
+                        <t t-if="o.company_id.email">
+                            <span t-field="o.company_id.email"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.street">
+                            <span t-field="o.company_id.street"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.street2">
+                            <span t-field="o.company_id.street2"/>
+                            <br/>
+                        </t>
+                        <tA t-if="o.company_id.zip">
+                            <span t-field="o.company_id.zip"/>
+                        </tA>
+                        <t t-if="o.company_id.city">
+                            <span t-field="o.company_id.city"/>
+                        </t>
+                        <t t-if="o.company_id.state_id">
+                            <span t-field="o.company_id.state_id"/>
+                        </t>
+                        <t t-if="o.company_id.country_id">
+                            <br/>
+                            <span t-field="o.company_id.country_id"/>
+                            <br/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-6 float-right">
+                    <address t-field="o.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    <div t-if="o.partner_id.ice" class="mt16">
+                        ICE : <span t-field="o.partner_id.ice"/>
+                    </div>
+                    <div t-if="o.partner_id.vat" class="mt16">
+                        IF : <span t-field="o.partner_id.vat"/>
+                    </div>
+                    <div t-if="o.partner_id.siret" class="mt16">
+                        SIRET : <span t-field="o.partner_id.siret"/>
+                    </div>
+                    <div t-if="o.partner_id.ape" class="mt16">
+                        APE : <span t-field="o.partner_id.ape"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

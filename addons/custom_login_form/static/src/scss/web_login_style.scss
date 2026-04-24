@@ -1,0 +1,24 @@
+$login__primary-dark: #023e8a !important;
+$login__primary-light: #0096c7 !important;
+
+/* 1. L'image de fond en plein écran */
+.itrisol-fullscreen-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-image: url('/custom_login_form/static/src/img/itrisol_background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* 2. Embellir la carte de login native (Remplace le code XML qui plantait) */
+.card {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+    border: none !important;
+}

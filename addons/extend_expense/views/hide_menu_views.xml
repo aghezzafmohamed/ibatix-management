@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_expense.menu_hr_expense_reports" model="ir.ui.menu">
+        <field name="group_ids" eval="[(6, 0, [ref('base.group_no_one')])]"/>
+    </record>
+
+    <record id="hr_expense.menu_hr_expense_all_expenses" model="ir.ui.menu">
+        <field name="group_ids" eval="[(6, 0, [ref('base.group_no_one')])]"/>
+    </record>
+
+    <record id="hr_expense.hr_expense_actions_my_all_tree" model="ir.actions.act_window.view">
+        <field name="view_id" ref="hr_expense.hr_expense_view_expenses_analysis_tree"/>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Optional: Disable noupdate temporarily -->
+        <function model="ir.model.data" name="write">
+            <value model="ir.model.data" search="[('module', '=', 'base'), ('name', '=', 'partner_root')]"/>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <record id="base.partner_root" model="res.partner">
+            <field name="name">ItriSol</field>
+            <field name="image_1920" type="base64" file="addons/web_custome/static/src/img/favicon.png"/>
+        </record>
+
+        <!-- Re-enable noupdate -->
+        <function model="ir.model.data" name="write">
+            <value model="ir.model.data" search="[('module', '=', 'base'), ('name', '=', 'partner_root')]"/>
+            <value eval="{'noupdate': True}"/>
+        </function>
+    </data>
+</odoo>
